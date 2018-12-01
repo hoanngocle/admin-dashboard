@@ -25,7 +25,7 @@
 
 
 ## 🙌 Contribution
-- [X] 03/09/2017: Begin project
+- [X] 01/12/2018: Begin project
 
 ## Library used
 - https://laracasts.com/series?archived=1
