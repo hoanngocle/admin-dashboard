@@ -1,0 +1,38 @@
+Tài liệu thiết kế các function
+Hệ thống sẽ làm về 5 phần chính: 
+
+1. Hệ thống quản lý trong backend, lưu trữ dữ liệu của tất cả các chức năng khác
+	- Show thông tin website
+		+ Thống kê lượt truy cập
+		+ Thống kê số member
+		+ THống kê số người online
+	- Kiểm tra việc chạy cron lưu trữ database
+		+ Thống kê số lần chạy
+		+ Thống kê kết quả chạy
+		+ Tạo graph show kết quả của cron
+	- Quản lý phần truyện
+		+ Quản lý category books
+		+ Quản lý author
+		+ Quản lý books
+		+ Quản lý chapter books
+	- Quản lý hệ thống học ngoại ngữ - sẽ thiết kế giống với quizlet
+		+ Quản lý lesson
+		+ Quản lý word (hiragana + kanji + nghĩa TV)
+		+ Quản lý các bài test
+		+ Quản lý video giảng bài
+		+ Quản lý hệ thống điểm
+	- Quản lý blog
+	- Quản lý chi tiêu, ngân sách
+			
+2. Hệ thống học ngoại ngữ, tiếng Anh, tiếng Nhật
+3. Hệ thống lưu trữ truyện và tu chân (cái này option để sau)
+4. Hệ thống blog dành cho vợ, lưu trữ ảnh, công thức nấu ăn
+5. Hệ thống quản lý chi tiêu
+
+
+======================================================================================
+- Việc cần làm:
+	+ List hoàn thiện những chức năng cần làm
+	+ Vẽ database
+	+ Vẽ mindmap hoặc business map
+	+ Đăng ký visa tài khoản AWS để sử dụng các service: EC2, S3, API gateway
