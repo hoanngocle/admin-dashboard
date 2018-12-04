@@ -15,6 +15,11 @@ Hệ thống sẽ làm về 5 phần chính:
 		+ Quản lý author
 		+ Quản lý books
 		+ Quản lý chapter books
+		+ Quản lý thư viện truyện cá nhân
+		+ Quản lý túi trữ vật
+		+ Quản lý vật phẩm (master)
+		+ Quản lý hệ thống tu luyện (master)
+		+ Quản lý hệ thống drop linh thạch + vật phẩm
 	- Quản lý hệ thống học ngoại ngữ - sẽ thiết kế giống với quizlet
 		+ Quản lý lesson
 		+ Quản lý word (hiragana + kanji + nghĩa TV)
