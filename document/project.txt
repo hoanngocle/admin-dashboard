@@ -27,7 +27,13 @@ Hệ thống sẽ làm về 5 phần chính:
 		+ Quản lý video giảng bài
 		+ Quản lý hệ thống điểm
 	- Quản lý blog
+		+ Quản lý bài viết
+		+ Quản lý ảnh
+		+ Quản lý video (sau)
 	- Quản lý chi tiêu, ngân sách
+		+ Quản lý thu chi
+		+ Quản lý ghi nợ
+		+ Quản lý ngân sách
 			
 2. Hệ thống học ngoại ngữ, tiếng Anh, tiếng Nhật
 3. Hệ thống lưu trữ truyện và tu chân (cái này option để sau)
@@ -41,3 +47,7 @@ Hệ thống sẽ làm về 5 phần chính:
 	+ Vẽ database
 	+ Vẽ mindmap hoặc business map
 	+ Đăng ký visa tài khoản AWS để sử dụng các service: EC2, S3, API gateway
+	
+	
+======================================================================================
+- Link diagram online: https://cacoo.com/diagrams/DOK0jpx5lhlOrJui
