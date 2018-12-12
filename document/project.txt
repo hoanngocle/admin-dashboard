@@ -37,20 +37,33 @@ Hệ thống sẽ làm về 5 phần chính:
 		+ Quản lý ngân sách
 		+ Quản lý tiết kiệm
 		+ Trích xuất báo cáo
-		+ Quản lý ngân sách
 2. Hệ thống học ngoại ngữ, tiếng Anh, tiếng Nhật
 	- Sau khi đăng nhập, hiện Dash Board show Reward, tiến trình các khóa học đang học, kết quả các bài test gần nhất
-	- Danh sách các khóa học 
-	- 
+	- Danh sách các khóa học
+	- Hồ sơ cá nhân
+	- Túi trữ vật
+	- Hệ thống thưởng sau khi hoàn thành bài test hoặc học bài mới, có xác suất được đồ và linh thạch
 3. Hệ thống lưu trữ truyện và tu chân (cái này option để sau)
+    - Trang chủ danh sách các truyện theo tiêu chí
+    - Hồ sơ cá nhân
+    - Tủ truyện cá nhân
+    - Túi trữ vật
+    - Hệ thống droplist như trong game, khi đọc truyện có xác suất rơi đồ và linh thạch
 4. Hệ thống blog dành cho vợ, lưu trữ ảnh, công thức nấu ăn
+    - Đăng bài mới, có tạo sẵn form cho việc đăng bài nấu ăn
+    - Hệ thống lưu trữ ảnh
 5. Hệ thống quản lý chi tiêu
+    - Thêm giao dịch mới
+    - Quản lý nợ nần
+    - Thêm ngân sách, quản lý ngân sách còn bao nhiêu
+    - Trích xuất báo cáo
+    - Xem ví tiết kiệm còn bao nhiêu
 
 
 ======================================================================================
 - Việc cần làm:
 	+ List hoàn thiện những chức năng cần làm => Done
-	+ Vẽ database => Doing
+	+ Vẽ database => Done
 	+ Vẽ mindmap hoặc business map => Done
 	+ Nghiên cứu sử dụng laravel-visits thay cho table riêng
 	+ Đăng ký visa tài khoản AWS để sử dụng các service: EC2, S3, API gateway
