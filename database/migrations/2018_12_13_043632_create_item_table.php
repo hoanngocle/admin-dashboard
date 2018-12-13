@@ -14,8 +14,14 @@ class CreateItemTable extends Migration
     public function up()
     {
         Schema::create('tm_item', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('item_id');
+            $table->unsignedInteger('category_id')->comment('Foreign key with category_table');
+            $table->string('item_code');
+            $table->string('item_name');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at')->nullable();
+            $table->integer('upuser')->nullable();
+            $table->foreign('category_id')->references('category_id')->on('tbl_category')->onDelete('cascade');
         });
     }
 
