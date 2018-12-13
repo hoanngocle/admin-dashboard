@@ -19,8 +19,8 @@ class CreateMemberTable extends Migration
             $table->string('email', 255)->unique();
             $table->string('username', 255)->unique();
             $table->string('password', 255);
-            $table->timestamp('password_expried_time');
-            $table->timestamp('log_date')->nullable()->comment('Show last login time of admin');
+            $table->dateTime('password_expried_time');
+            $table->dateTime('log_date')->nullable()->comment('Show last login time of admin');
             $table->integer('log_num')->unsigned()->default(1)->comment('Count login times of admin');
             $table->tinyInteger('is_online')->unsigned()->default(1)
                 ->comment('Member is online or offline: 0 - offline; 1 - online');
@@ -34,7 +34,7 @@ class CreateMemberTable extends Migration
             $table->unsignedInteger('level')->default(1)->comment('Level of member: define in table tm_level');
             $table->float('exp')->unsigned()->default(0)->comment('Exp of member');
             $table->dateTime('created_at');
-            $table->dateTime('updated_at');
+            $table->dateTime('updated_at')->nullable();
             $table->integer('upuser')->nullable();
         });
     }

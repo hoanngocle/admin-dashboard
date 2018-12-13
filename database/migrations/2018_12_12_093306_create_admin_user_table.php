@@ -20,13 +20,13 @@ class CreateAdminUserTable extends Migration
             $table->string('email', 255)->unique();
             $table->string('username', 255)->unique();
             $table->string('password', 255);
-            $table->timestamp('log_date')->nullable()->comment('Show last login time of admin');
+            $table->dateTime('log_date')->nullable()->comment('Show last login time of admin');
             $table->integer('log_num')->unsigned()->default(1)->comment('Count login times of admin');
             $table->tinyInteger('is_active')->unsigned()->default(1)
                 ->comment('Admin account is active or block: 0 - block; 1 - active');
             $table->tinyInteger('acl_flag')->unsigned()->default(1)->comment('Admin roles: 1 - mod ; 99 - admin');
             $table->dateTime('created_at');
-            $table->dateTime('updated_at');
+            $table->dateTime('updated_at')->nullable();
         });
     }
 

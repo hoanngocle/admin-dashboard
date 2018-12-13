@@ -14,8 +14,12 @@ class CreateLevelTable extends Migration
     public function up()
     {
         Schema::create('tm_level', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('level_id');
+            $table->smallInteger('level');
+            $table->string('name', 50)->comment('Name of level');
+            $table->float('exp_require')->unsigned()->comment('Exp required to level up');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at')->nullable();
         });
     }
 

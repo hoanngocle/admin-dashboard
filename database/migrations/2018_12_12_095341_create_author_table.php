@@ -14,8 +14,13 @@ class CreateAuthorTable extends Migration
     public function up()
     {
         Schema::create('tbl_author', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('author_id');
+            $table->string('author_name');
+            $table->string('nickname');
+            $table->text('story')->nullable()->comment('Brief of author');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at')->nullable();
+            $table->integer('upuser')->nullable();
         });
     }
 
