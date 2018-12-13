@@ -21,12 +21,12 @@ class CreateAdminUserTable extends Migration
             $table->string('username', 255)->unique();
             $table->string('password', 255);
             $table->dateTime('log_date')->nullable()->comment('Show last login time of admin');
-            $table->integer('log_num')->unsigned()->default(1)->comment('Count login times of admin');
-            $table->tinyInteger('is_active')->unsigned()->default(1)
-                ->comment('Admin account is active or block: 0 - block; 1 - active');
-            $table->tinyInteger('acl_flag')->unsigned()->default(1)->comment('Admin roles: 1 - mod ; 99 - admin');
+            $table->unsignedInteger('log_num')->default(1)->comment('Count login times of admin');
+            $table->enum('is_active', ['Actived', 'Block'])->default('Actived')->comment('Admin account status');
+            $table->enum('acl_flag', ['Moderator', 'Admin'])->default('Moderator')->comment('Admin roles');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
+            $table->dateTime('upuser')->nullable();
         });
     }
 

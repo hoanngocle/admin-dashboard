@@ -18,7 +18,8 @@ class CreateCategoryTable extends Migration
             $table->string('category_code')->unique();
             $table->string('category_name')->unique();
             $table->string('category_icon')->nullable()->comment('url icon of category');
-            $table->tinyInteger('category_level')->default(1)->comment('level of category: cat1; cat2; cat3; cat4');
+            $table->enum('category_level', ['cat1', 'cat2', 'cat3'])->default('cat1')
+                ->comment('level of category');
             $table->integer('parent_id')->nullable()->comment('when cat is sub-menu, need to define parent');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();

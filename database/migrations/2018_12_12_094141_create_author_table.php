@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLevelTable extends Migration
+class CreateAuthorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateLevelTable extends Migration
      */
     public function up()
     {
-        Schema::create('tm_level', function (Blueprint $table) {
-            $table->increments('level_id');
-            $table->smallInteger('level');
-            $table->string('name', 50)->comment('Name of level');
-            $table->bigInteger('exp_require')->unsigned()->comment('Exp required to level up');
+        Schema::create('tbl_author', function (Blueprint $table) {
+            $table->increments('author_id');
+            $table->string('author_name', 100);
+            $table->string('nickname', 100);
+            $table->text('story')->nullable()->comment('Brief of author');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->dateTime('upuser')->nullable();
+            $table->integer('upuser')->nullable();
         });
     }
 
@@ -31,6 +31,6 @@ class CreateLevelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tm_level');
+        Schema::dropIfExists('tbl_author');
     }
 }

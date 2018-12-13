@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuthorTable extends Migration
+class CreateCourseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateAuthorTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_author', function (Blueprint $table) {
-            $table->increments('author_id');
-            $table->string('author_name');
-            $table->string('nickname');
-            $table->text('story')->nullable()->comment('Brief of author');
+        Schema::create('tbl_course', function (Blueprint $table) {
+            $table->increments('course_id');
+            $table->string('course_name', 255);
+            $table->text('description')->comment('summary of course');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
             $table->integer('upuser')->nullable();
@@ -31,6 +30,6 @@ class CreateAuthorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_author');
+        Schema::dropIfExists('tbl_course');
     }
 }
