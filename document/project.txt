@@ -74,3 +74,18 @@ Hệ thống sẽ làm về 5 phần chính:
 - Link auto gen SSG page: https://www.staticgen.com
 - Link List task và System design: https://goo.gl/r36KLt
 - Link list database: https://goo.gl/t42kYL
+
+======================================================================================
+Trick Project
+1. Set the timezone Linux
+    - Show list timezone
+        cd /usr/share/zoneinfo
+    - To set the timezone of your system clock do the following:
+        cp /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
+
+2. Run migration following time create file, if not, maybe get error
+
+3. onDelete in foreign key only use following action
+    $table->...->onDelete('CASCADE');
+    $table->...->onDelete('SET NULL');
+    $table->...->onDelete('RESTRICT');
