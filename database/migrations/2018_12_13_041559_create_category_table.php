@@ -14,8 +14,15 @@ class CreateCategoryTable extends Migration
     public function up()
     {
         Schema::create('tbl_category', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('category_id');
+            $table->string('category_code')->unique();
+            $table->string('category_name')->unique();
+            $table->string('category_icon')->nullable()->comment('url icon of category');
+            $table->tinyInteger('category_level')->default(1)->comment('level of category: cat1; cat2; cat3; cat4');
+            $table->integer('parent_id')->nullable()->comment('when cat is sub-menu, need to define parent');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at')->nullable();
+            $table->integer('upuser')->nullable();
         });
     }
 
