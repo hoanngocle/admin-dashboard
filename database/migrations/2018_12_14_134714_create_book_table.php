@@ -18,6 +18,7 @@ class CreateBookTable extends Migration
             $table->unsignedInteger('author_id')->nullable();
             $table->string('book_code', 12);
             $table->string('title', 255);
+            $table->string('book_cover')->nullable()->comment('cover url image in S3 - or directory in server');
             $table->text('description');
             $table->integer('chapter_num');
             $table->integer('word_num');

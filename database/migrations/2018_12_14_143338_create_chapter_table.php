@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookViewerTable extends Migration
+class CreateChapterTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,22 @@ class CreateBookViewerTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_book_viewer', function (Blueprint $table) {
-            $table->increments('entity_id');
+        Schema::create('tbl_chapter', function (Blueprint $table) {
+            $table->increments('chapter_id');
             $table->unsignedInteger('book_id')->nullable();
-            $table->integer('avg_point')->default(0)->comment('Point receive by vote');
-            $table->integer('vote')->default(0)->comment('Count times vote');
-            $table->integer('view')->default(0)->comment('count number of view in book');
+            $table->unsignedInteger('author_id')->nullable();
+            $table->string('title', 255);
+            $table->longText('content');
+            $table->integer('word_num')->comment('count number of word in chapter');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
             $table->integer('upuser')->nullable();
             $table->softDeletes();
         });
 
-        Schema::table('tbl_book_viewer', function (Blueprint $table) {
+        Schema::table('tbl_chapter', function (Blueprint $table) {
             $table->foreign('book_id')->references('book_id')->on('tbl_book')->onDelete('SET NULL');
+            $table->foreign('author_id')->references('author_id')->on('tbl_book')->onDelete('SET NULL');
         });
     }
 
@@ -37,6 +39,6 @@ class CreateBookViewerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_book_viewer');
+        Schema::dropIfExists('tbl_chapter');
     }
 }
