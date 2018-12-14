@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoanDebtTable extends Migration
+class CreateResultTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,22 @@ class CreateLoanDebtTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_loan_debt', function (Blueprint $table) {
-            $table->increments('loan_debt_id');
+        Schema::create('tbl_result', function (Blueprint $table) {
+            $table->increments('entity_id');
             $table->unsignedInteger('member_id')->nullable();
-            $table->string('name', 255);
-            $table->bigInteger('value')->comment('Value of debt or loan');
-            $table->enum('type', ['Loan', 'Debt'])->default('Loan');
-            $table->string('loan_debt_person', 100)->nullable();
+            $table->unsignedInteger('lesson_id')->nullable();
+            $table->longText('content')->nullable()->comment('save content result');
+            $table->integer('wrong_answer')->comment('use to count point');
+            $table->integer('total_question')->comment('total number of question of test');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
             $table->integer('upuser')->nullable();
             $table->softDeletes();
         });
 
-        Schema::table('tbl_loan_debt', function (Blueprint $table) {
+        Schema::table('tbl_result', function (Blueprint $table) {
             $table->foreign('member_id')->references('member_id')->on('tbl_member')->onDelete('SET NULL');
+            $table->foreign('lesson_id')->references('lesson_id')->on('tbl_lesson')->onDelete('SET NULL');
         });
     }
 
@@ -38,6 +39,6 @@ class CreateLoanDebtTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_loan_debt');
+        Schema::dropIfExists('tbl_result');
     }
 }

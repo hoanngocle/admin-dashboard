@@ -27,6 +27,7 @@ class CreateAdminUserTable extends Migration
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
             $table->dateTime('upuser')->nullable();
+            $table->softDeletes();
         });
     }
 

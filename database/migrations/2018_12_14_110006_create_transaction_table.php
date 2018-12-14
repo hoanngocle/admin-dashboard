@@ -28,6 +28,7 @@ class CreateTransactionTable extends Migration
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
             $table->integer('upuser')->nullable();
+            $table->softDeletes();
         });
 
         Schema::table('tbl_transaction', function (Blueprint $table) {
