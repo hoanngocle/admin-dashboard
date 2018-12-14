@@ -22,8 +22,8 @@ class CreateResultTable extends Migration
             $table->integer('total_question')->comment('total number of question of test');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->integer('upuser')->nullable();
             $table->softDeletes();
+            $table->integer('upuser')->nullable();
         });
 
         Schema::table('tbl_result', function (Blueprint $table) {

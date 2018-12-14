@@ -22,8 +22,8 @@ class CreateLoanDebtTable extends Migration
             $table->string('loan_debt_person', 100)->nullable();
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->integer('upuser')->nullable();
             $table->softDeletes();
+            $table->integer('upuser')->nullable();
         });
 
         Schema::table('tbl_loan_debt', function (Blueprint $table) {

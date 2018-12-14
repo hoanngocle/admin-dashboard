@@ -89,3 +89,5 @@ Trick Project
     $table->...->onDelete('CASCADE');
     $table->...->onDelete('SET NULL');
     $table->...->onDelete('RESTRICT');
+
+    - remember to add nullable() with onDelete('SET NULL')

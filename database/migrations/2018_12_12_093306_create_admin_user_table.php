@@ -26,8 +26,8 @@ class CreateAdminUserTable extends Migration
             $table->enum('acl_flag', ['Moderator', 'Admin'])->default('Moderator')->comment('Admin roles');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->dateTime('upuser')->nullable();
             $table->softDeletes();
+            $table->integer('upuser')->nullable();
         });
     }
 

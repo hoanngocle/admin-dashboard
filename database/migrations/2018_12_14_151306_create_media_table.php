@@ -20,7 +20,7 @@ class CreateMediaTable extends Migration
             $table->unsignedInteger('album_id')->nullable();
             $table->string('media_code', 12);
             $table->string('url', 255);
-            $table->string('title', 255)->nullable();
+            $table->string('title', 255);
             $table->string('description', 255)->nullable();
             $table->enum('is_actived', ['Enable', 'Disable'])->default('Enable')->nullable();
             $table->dateTime('created_at');

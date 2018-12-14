@@ -32,8 +32,8 @@ class CreateMemberTable extends Migration
             $table->unsignedBigInteger('exp')->default(0)->comment('Exp of member');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->integer('upuser')->nullable();
             $table->softDeletes();
+            $table->integer('upuser')->nullable();
         });
     }
 
