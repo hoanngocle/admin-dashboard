@@ -33,6 +33,7 @@ class CreateMemberTable extends Migration
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
             $table->integer('upuser')->nullable();
+            $table->softDeletes();
         });
     }
 
