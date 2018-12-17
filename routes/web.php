@@ -11,8 +11,39 @@
 |
 */
 
-Route::resource('/', 'DashBoardController@index');
-
+/***************************BACK-END*****************************/
+// Login page
+/**
+ * @todo: add login, register view, processLogin, processRegistration Ajax
+ * use middle ware login or not, must be login to use BO
+ */
 Route::prefix('admin')->group(function () {
     Route::resource('login', 'LoginController@index');
 });
+
+// Dashboard BO
+Route::resource('/', 'DashBoardController@index');
+
+
+
+// Member Management
+
+// Content management
+
+// Quiz management
+
+// Book management
+
+/***************************FRONT-END*****************************/
+
+// Count-down page
+
+// e-Learning page
+
+// Library book online
+
+// Money expense management online
+
+// Blog, photos, videos management
+
+// Menu food online
