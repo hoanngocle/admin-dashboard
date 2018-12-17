@@ -25,8 +25,8 @@ class CreateBookTable extends Migration
             $table->tinyInteger('status')->default(1)->comment('Status of book: 1 - Continue; 2 - Finished');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->integer('upuser')->nullable();
             $table->softDeletes();
+            $table->integer('upuser')->nullable();
         });
 
         Schema::table('tbl_book', function (Blueprint $table) {

@@ -20,8 +20,8 @@ class CreateLessonTable extends Migration
             $table->integer('term_count');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->integer('upuser')->nullable();
             $table->softDeletes();
+            $table->integer('upuser')->nullable();
         });
 
         Schema::table('tbl_lesson', function (Blueprint $table) {

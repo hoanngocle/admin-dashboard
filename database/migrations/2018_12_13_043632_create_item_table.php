@@ -16,8 +16,8 @@ class CreateItemTable extends Migration
         Schema::create('tm_item', function (Blueprint $table) {
             $table->increments('item_id');
             $table->unsignedInteger('category_id')->nullable()->comment('Foreign key with category_table');
-            $table->string('item_code')->unique();
-            $table->string('item_name')->unique();
+            $table->string('code')->unique();
+            $table->string('name')->unique();
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
             $table->integer('upuser')->nullable();

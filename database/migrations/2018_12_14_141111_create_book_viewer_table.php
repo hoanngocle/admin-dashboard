@@ -21,8 +21,8 @@ class CreateBookViewerTable extends Migration
             $table->integer('view')->default(0)->comment('count number of view in book');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->integer('upuser')->nullable();
             $table->softDeletes();
+            $table->integer('upuser')->nullable();
         });
 
         Schema::table('tbl_book_viewer', function (Blueprint $table) {

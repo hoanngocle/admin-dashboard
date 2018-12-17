@@ -27,8 +27,8 @@ class CreateTransactionTable extends Migration
             $table->enum('type', ['Inflow', 'Outflow'])->comment('Type of transaction');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->integer('upuser')->nullable();
             $table->softDeletes();
+            $table->integer('upuser')->nullable();
         });
 
         Schema::table('tbl_transaction', function (Blueprint $table) {

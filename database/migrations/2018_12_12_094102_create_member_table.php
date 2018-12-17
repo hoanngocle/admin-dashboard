@@ -32,8 +32,13 @@ class CreateMemberTable extends Migration
             $table->unsignedBigInteger('exp')->default(0)->comment('Exp of member');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->integer('upuser')->nullable();
             $table->softDeletes();
+            $table->integer('upuser')->nullable();
+        });
+
+        Schema::table('tbl_member', function (Blueprint $table) {
+            $table->string('rp_token', 255)->nullable()->after('password_expried_time');
+            $table->string('avatar', 255)->nullable()->after('nickname');
         });
     }
 

@@ -21,8 +21,8 @@ class CreateLibraryTable extends Migration
             $table->integer('current_chapter')->default(1)->comment('keep reading from this chapter');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
-            $table->integer('upuser')->nullable();
             $table->softDeletes();
+            $table->integer('upuser')->nullable();
         });
 
         Schema::table('tbl_library', function (Blueprint $table) {
