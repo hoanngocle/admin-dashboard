@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::resource('/', 'DashBoardController@index');
+
+Route::prefix('admin')->group(function () {
+    Route::resource('login', 'LoginController@index');
 });
