@@ -39,7 +39,7 @@ class LoginController extends Controller
 
     public function index()
     {
-        return 'login view';
+        return view('admin.auth.login');
     }
 
     public function processLogin()

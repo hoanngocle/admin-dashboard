@@ -39,7 +39,7 @@ class RegisterController extends Controller
 
     public function index()
     {
-        return 'register view';
+        return view('admin.auth.register');
     }
 
     public function processLogin()
