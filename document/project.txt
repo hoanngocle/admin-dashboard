@@ -68,7 +68,8 @@ Hệ thống sẽ làm về 5 phần chính:
 	+ Nghiên cứu sử dụng laravel-visits thay cho table riêng
 	+ Đăng ký visa tài khoản AWS để sử dụng các service: EC2, S3, API gateway
 	+ Sử dụng https://quizlet.com/api/2.0/docs/api-intro để lấy data từ quizlet
-	
+    + List route
+
 ======================================================================================
 - Link diagram online: https://cacoo.com/diagrams/DOK0jpx5lhlOrJui
 - Link auto gen SSG page: https://www.staticgen.com
