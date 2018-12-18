@@ -17,14 +17,30 @@
  * @todo: add login, register view, processLogin, processRegistration Ajax
  * use middle ware login or not, must be login to use BO
  */
-Route::prefix('admin')->group(function () {
-    Route::resource('login', 'LoginController@index');
+Route::prefix('admin')->namespace('Admin')->group(function () {
+    // Dashboard BO
+    Route::resource('/', 'DashboardController');
+
+    // Login, Register, Password Recover
+    Route::namespace('Auth')->group(function () {
+        // Login routes
+        Route::get('login', 'LoginController@index');
+        Route::post('login', 'LoginController@processLogin');
+
+        // Register routes
+        Route::get('register', 'RegisterController@index');
+        Route::post('register', 'RegisterController@processRegister');
+
+        // Password reset token routes
+        Route::get('forgot-password', 'PasswordController@index');
+        Route::post('forgot-password', 'PasswordController@sendToken');
+        Route::get('change-password', 'PasswordController@changePassword');
+        Route::post('change-password', 'PasswordController@processChangePassword');
+    });
+
+    Route::post('logout', 'Auth/LoginController@logout');
+
 });
-
-// Dashboard BO
-Route::resource('/', 'DashBoardController@index');
-
-
 
 // Member Management
 
