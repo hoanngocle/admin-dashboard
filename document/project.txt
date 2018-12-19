@@ -1,0 +1,94 @@
+Tài liệu thiết kế các function
+Hệ thống sẽ làm về 5 phần chính: 
+
+1. Hệ thống quản lý trong backend, lưu trữ dữ liệu của tất cả các chức năng khác
+	- Show thông tin website
+		+ Thống kê lượt truy cập
+		+ Thống kê số member
+		+ THống kê số người online
+	- Kiểm tra việc chạy cron lưu trữ database
+		+ Thống kê số lần chạy
+		+ Thống kê kết quả chạy
+		+ Tạo graph show kết quả của cron
+	- Quản lý phần truyện
+		+ Quản lý category books
+		+ Quản lý author
+		+ Quản lý books
+		+ Quản lý chapter books
+		+ Quản lý thư viện truyện cá nhân
+		+ Quản lý túi trữ vật
+		+ Quản lý vật phẩm (master)
+		+ Quản lý hệ thống tu luyện (master)
+		+ Quản lý hệ thống drop linh thạch + vật phẩm
+	- Quản lý hệ thống học ngoại ngữ - sẽ thiết kế giống với quizlet
+		+ Quản lý lesson
+		+ Quản lý word (hiragana + kanji + nghĩa TV)
+		+ Quản lý các bài test
+		+ Quản lý video giảng bài
+		+ Quản lý hệ thống điểm
+		+ Quản lý Achivement học viên
+	- Quản lý blog
+		+ Quản lý bài viết
+		+ Quản lý ảnh
+		+ Quản lý video (sau)
+	- Quản lý chi tiêu, ngân sách
+		+ Quản lý thu chi
+		+ Quản lý ghi nợ
+		+ Quản lý ngân sách
+		+ Quản lý tiết kiệm
+		+ Trích xuất báo cáo
+2. Hệ thống học ngoại ngữ, tiếng Anh, tiếng Nhật
+	- Sau khi đăng nhập, hiện Dash Board show Reward, tiến trình các khóa học đang học, kết quả các bài test gần nhất
+	- Danh sách các khóa học
+	- Hồ sơ cá nhân
+	- Túi trữ vật
+	- Hệ thống thưởng sau khi hoàn thành bài test hoặc học bài mới, có xác suất được đồ và linh thạch
+3. Hệ thống lưu trữ truyện và tu chân (cái này option để sau)
+    - Trang chủ danh sách các truyện theo tiêu chí
+    - Hồ sơ cá nhân
+    - Tủ truyện cá nhân
+    - Túi trữ vật
+    - Hệ thống droplist như trong game, khi đọc truyện có xác suất rơi đồ và linh thạch
+4. Hệ thống blog dành cho vợ, lưu trữ ảnh, công thức nấu ăn
+    - Đăng bài mới, có tạo sẵn form cho việc đăng bài nấu ăn
+    - Hệ thống lưu trữ ảnh
+5. Hệ thống quản lý chi tiêu
+    - Thêm giao dịch mới
+    - Quản lý nợ nần
+    - Thêm ngân sách, quản lý ngân sách còn bao nhiêu
+    - Trích xuất báo cáo
+    - Xem ví tiết kiệm còn bao nhiêu
+
+
+======================================================================================
+- Việc cần làm:
+	+ List hoàn thiện những chức năng cần làm => Done
+	+ Vẽ database => Done
+	+ Vẽ mindmap hoặc business map => Done
+	+ Nghiên cứu sử dụng laravel-visits thay cho table riêng
+	+ Đăng ký visa tài khoản AWS để sử dụng các service: EC2, S3, API gateway
+	+ Sử dụng https://quizlet.com/api/2.0/docs/api-intro để lấy data từ quizlet
+    + List route
+
+======================================================================================
+- Link diagram online: https://cacoo.com/diagrams/DOK0jpx5lhlOrJui
+- Link auto gen SSG page: https://www.staticgen.com
+- Link List task và System design: https://goo.gl/r36KLt
+- Link list database: https://goo.gl/t42kYL
+
+======================================================================================
+Trick Project
+1. Set the timezone Linux
+    - Show list timezone
+        cd /usr/share/zoneinfo
+    - To set the timezone of your system clock do the following:
+        cp /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
+
+2. Run migration following time create file, if not, maybe get error
+
+3. onDelete in foreign key only use following action
+    $table->...->onDelete('CASCADE');
+    $table->...->onDelete('SET NULL');
+    $table->...->onDelete('RESTRICT');
+
+    - remember to add nullable() with onDelete('SET NULL')
