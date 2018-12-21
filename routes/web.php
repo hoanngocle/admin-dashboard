@@ -34,11 +34,13 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         // Password reset token routes
         Route::get('forgot-password', 'PasswordController@index');
         Route::post('forgot-password', 'PasswordController@sendToken');
-        Route::get('change-password', 'PasswordController@changePassword');
-        Route::post('change-password', 'PasswordController@processChangePassword');
+        Route::get('reset-password', 'ResetPasswordController@index');
+        Route::post('reset-password', 'ResetPasswordController@processResetPassword');
+
+        // Logout route
+        Route::post('logout', 'LoginController@logout');
     });
 
-    Route::post('logout', 'Auth/LoginController@logout');
 
 });
 

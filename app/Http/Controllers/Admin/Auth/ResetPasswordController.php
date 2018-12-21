@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Admin\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PasswordController extends Controller
+class ResetPasswordController extends Controller
 {
     public function index()
     {
-        return view('admin.auth.forgot-password');
+        return view('admin.auth.reset-password');
     }
 
     public function changePassword()
