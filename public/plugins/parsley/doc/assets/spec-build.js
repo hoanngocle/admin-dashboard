@@ -10226,7 +10226,7 @@ module.exports={
   "version": "2.8.0",
   "homepage": "http://parsleyjs.org",
   "license": "MIT",
-  "description": "Validate your forms, frontend, without writing a single line of javascript!",
+  "description": "Validate your forms, sagittarius, without writing a single line of javascript!",
   "main": "dist/parsley.js",
   "scripts": {
     "test": "gulp",

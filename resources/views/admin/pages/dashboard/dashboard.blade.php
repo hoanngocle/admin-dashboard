@@ -18,6 +18,7 @@
             </div>
         </div>
         <!-- end col-3 -->
+
         <!-- begin col-3 -->
         <div class="col-lg-3 col-md-6">
             <div class="widget widget-stats bg-gradient-blue">

@@ -6,6 +6,8 @@
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
+
+        <!-- include css-->
         @include('admin.assests.css')
     </head>
     <body>
@@ -15,36 +17,33 @@
 
     <!-- begin #page-container -->
     <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
-        <!-- begin #header -->
+
+        <!-- partials #header -->
         @include('admin.partials.header')
-        <!-- end #header -->
 
-        <!-- begin #sidebar -->
+        <!-- partials #sidebar -->
         @include('admin.partials.sidebar')
-        <!-- end #sidebar -->
 
-        <!-- begin #content -->
+        <!--  #content -->
         <div id="content" class="content">
-            <!-- begin breadcrumb -->
+
+            <!-- partials breadcrumb -->
             @include('admin.partials.breadcrumb')
-            <!-- end breadcrumb -->
 
-            <!-- begin page-header -->
+            <!-- page-header -->
             <h1 class="page-header">Dashboard v2 <small>header small text goes here...</small></h1>
-            <!-- end page-header -->
 
-            <!-- begin #content -->
+            <!-- page #content -->
             @yield('content')
-            <!-- end #content -->
-        </div>
-        <!-- end #content -->
 
-        <!-- begin scroll to top btn -->
+        </div>
+
+        <!-- partials - scroll to top btn -->
         @include('admin.partials.up-to-top')
-        <!-- end scroll to top btn -->
     </div>
     <!-- end page container -->
 
+    <!-- include js -->
     @include('admin.assests.js')
     </body>
 </html>

@@ -34,12 +34,12 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('guest')->except('logout');
+        $this->middleware('auth:admin');
     }
 
     public function index()
     {
-        return view('admin.auth.login');
+        return view('admin.pages.auth.login');
     }
 
     public function processLogin()

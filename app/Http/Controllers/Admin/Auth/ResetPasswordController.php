@@ -9,7 +9,7 @@ class ResetPasswordController extends Controller
 {
     public function index()
     {
-        return view('admin.auth.reset-password');
+        return view('admin.pages.auth.reset-password');
     }
 
     public function changePassword()
