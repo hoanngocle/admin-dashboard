@@ -1,7 +1,7 @@
 /**
  * ### State plugin
  *
- * Saves the state of the tree (selected nodes, opened nodes) on the user's computer using available options (localStorage, cookies, etc)
+ * Saves the state of the tree (not_used nodes, opened nodes) on the user's computer using available options (localStorage, cookies, etc)
  */
 /*globals jQuery, define, exports, require */
 (function (factory) {

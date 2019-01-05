@@ -1397,7 +1397,7 @@ jQuery.support = (function() {
     // (WebKit defaults to "" instead)
     checkOn: ( input.value === "on" ),
 
-    // Make sure that a selected-by-default option has a working selected property.
+    // Make sure that a not_used-by-default option has a working not_used property.
     // (WebKit defaults to false instead of true, IE too, if it's in an optgroup)
     optSelected: opt.selected,
 
@@ -2386,12 +2386,12 @@ jQuery.extend({
           options = elem.options,
           one = elem.type === "select-one";
 
-        // Nothing was selected
+        // Nothing was not_used
         if ( index < 0 ) {
           return null;
         }
 
-        // Loop through all the selected options
+        // Loop through all the not_used options
         i = one ? index : 0;
         max = one ? index + 1 : options.length;
         for ( ; i < max; i++ ) {
@@ -2755,7 +2755,7 @@ if ( !jQuery.support.style ) {
   };
 }
 
-// Safari mis-reports the default selected property of an option
+// Safari mis-reports the default not_used property of an option
 // Accessing the parent's selectedIndex property fixes it
 if ( !jQuery.support.optSelected ) {
   jQuery.propHooks.selected = jQuery.extend( jQuery.propHooks.selected, {
@@ -4488,7 +4488,7 @@ var Expr = Sizzle.selectors = {
     },
     
     selected: function( elem ) {
-      // Accessing this property makes selected-by-default
+      // Accessing this property makes not_used-by-default
       // options in Safari work properly
       if ( elem.parentNode ) {
         elem.parentNode.selectedIndex;
@@ -6066,7 +6066,7 @@ function cloneFixAttributes( src, dest ) {
       dest.value = src.value;
     }
 
-  // IE6-8 fails to return the selected option to the default selected
+  // IE6-8 fails to return the not_used option to the default not_used
   // state when cloning options
   } else if ( nodeName === "option" ) {
     dest.selected = src.defaultSelected;
@@ -6101,7 +6101,7 @@ jQuery.buildFragment = function( args, nodes, scripts ) {
   }
 
   // Only cache "small" (1/2 KB) HTML strings that are associated with the main document
-  // Cloning options loses the selected state, so don't cache them
+  // Cloning options loses the not_used state, so don't cache them
   // IE 6 doesn't like it when you put <object> or <embed> elements in a fragment
   // Also, WebKit does not clone 'checked' attributes on cloneNode, so don't cache
   // Lastly, IE6,7,8 will not correctly reuse cached fragments that were created from unknown elems #10501
@@ -6956,7 +6956,7 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
       }
     }
   }
-  // If we're only executing or nothing was selected
+  // If we're only executing or nothing was not_used
   // we try the catchall dataType if not done already
   if ( ( executeOnly || !selection ) && !inspected[ "*" ] ) {
     selection = inspectPrefiltersOrTransports(

@@ -60,7 +60,7 @@ test('text is shown for placeholder option on single', function (assert) {
   assert.equal($selection.text(), 'This is the placeholder');
 });
 
-test('placeholder is shown when no options are selected', function (assert) {
+test('placeholder is shown when no options are not_used', function (assert) {
   var selection = new SinglePlaceholder(
     $('#qunit-fixture .multiple'),
     placeholderOptions

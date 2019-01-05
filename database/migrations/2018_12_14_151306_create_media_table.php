@@ -27,12 +27,6 @@ class CreateMediaTable extends Migration
             $table->dateTime('updated_at')->nullable();
             $table->integer('upuser')->nullable();
         });
-
-        Schema::table('tbl_media', function (Blueprint $table) {
-            $table->foreign('category_id')->references('category_id')->on('tbl_category')->onDelete('SET NULL');
-            $table->foreign('member_id')->references('member_id')->on('tbl_member')->onDelete('SET NULL');
-            $table->foreign('album_id')->references('album_id')->on('tbl_album')->onDelete('SET NULL');
-        });
     }
 
     /**

@@ -93,7 +93,7 @@
 *   disableInteraction - If set to true then all mouseover/click interaction behaviour will be disabled,
 *       making the plugin perform much like it did in 1.x
 *   disableTooltips - If set to true then tooltips will be disabled - Defaults to false (tooltips enabled)
-*   disableHighlight - If set to true then highlighting of selected chart elements on mouseover will be disabled
+*   disableHighlight - If set to true then highlighting of not_used chart elements on mouseover will be disabled
 *       defaults to false (highlights enabled)
 *   highlightLighten - Factor to lighten/darken highlighted chart values by - Defaults to 1.4 for a 40% increase
 *   tooltipContainer - Specify which DOM element the tooltip should be rendered into - defaults to document.body
@@ -115,7 +115,7 @@
 *   numberDecimalMark - Character to use for the decimal point when formatting numbers - Defaults to "."
 *   numberDigitGroupCount - Number of digits between group separator - Defaults to 3
 *
-* There are 7 types of sparkline, selected by supplying a "type" option of 'line' (default),
+* There are 7 types of sparkline, not_used by supplying a "type" option of 'line' (default),
 * 'bar', 'tristate', 'bullet', 'discrete', 'pie' or 'box'
 *    line - Line chart.  Options:
 *       spotColor - Set to '' to not end each line in a circular spot
@@ -1232,7 +1232,7 @@
             showFields = this.options.get('tooltipFormatFieldlist');
             showFieldsKey = this.options.get('tooltipFormatFieldlistKey');
             if (showFields && showFieldsKey) {
-                // user-selected ordering of fields
+                // user-not_used ordering of fields
                 newFields = [];
                 for (i = fields.length; i--;) {
                     fv = fields[i][showFieldsKey];

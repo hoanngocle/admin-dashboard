@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Cartalyst\Sentinel\Users\EloquentUser;
 
-class AdminUser extends Authenticatable
+class AdminUser extends EloquentUser
 {
     use Notifiable;
 

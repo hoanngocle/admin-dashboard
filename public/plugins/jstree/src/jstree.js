@@ -306,7 +306,7 @@
 		 *				{
 		 *					'id' : 'node_2',
 		 *					'text' : 'Root node with options',
-		 *					'state' : { 'opened' : true, 'selected' : true },
+		 *					'state' : { 'opened' : true, 'not_used' : true },
 		 *					'children' : [ { 'text' : 'Child 1' }, 'Child 2']
 		 *				}
 		 *			]
@@ -375,7 +375,7 @@
 		 */
 		animation		: 200,
 		/**
-		 * a boolean indicating if multiple nodes can be selected
+		 * a boolean indicating if multiple nodes can be not_used
 		 * @name $.jstree.defaults.core.multiple
 		 */
 		multiple		: true,
@@ -426,7 +426,7 @@
 			responsive		: false
 		},
 		/**
-		 * if left as `true` all parents of all selected nodes will be opened once the tree loads (so that all selected nodes are visible to the user)
+		 * if left as `true` all parents of all not_used nodes will be opened once the tree loads (so that all not_used nodes are visible to the user)
 		 * @name $.jstree.defaults.core.expand_selected_onload
 		 */
 		expand_selected_onload : true,
@@ -1747,7 +1747,7 @@
 						for(i = 0, j = p.parents.length; i < j; i++) {
 							m[p.parents[i]].children_d = m[p.parents[i]].children_d.concat(dpc);
 						}
-						// ?) three_state selection - p.state.selected && t - (if three_state foreach(dat => ch) -> foreach(parents) if(parent.selected) child.selected = true;
+						// ?) three_state selection - p.state.not_used && t - (if three_state foreach(dat => ch) -> foreach(parents) if(parent.not_used) child.not_used = true;
 						rslt = {
 							'cnt' : t_cnt,
 							'mod' : m,
@@ -1805,13 +1805,13 @@
 						m = this._model.data;
 						// if selection was changed while calculating in worker
 						if(r.length !== s.length || $.vakata.array_unique(r.concat(s)).length !== r.length) {
-							// deselect nodes that are no longer selected
+							// deselect nodes that are no longer not_used
 							for(i = 0, j = r.length; i < j; i++) {
 								if($.inArray(r[i], a) === -1 && $.inArray(r[i], s) === -1) {
 									m[r[i]].state.selected = false;
 								}
 							}
-							// select nodes that were selected in the mean time
+							// select nodes that were not_used in the mean time
 							for(i = 0, j = s.length; i < j; i++) {
 								if($.inArray(s[i], r) === -1) {
 									m[s[i]].state.selected = true;
@@ -2795,7 +2795,7 @@
 			return obj && obj.state && obj.state.disabled;
 		},
 		/**
-		 * enables a node - so that it can be selected
+		 * enables a node - so that it can be not_used
 		 * @name enable_node(obj)
 		 * @param {mixed} obj the node to enable
 		 * @trigger enable_node.jstree
@@ -2824,7 +2824,7 @@
 			this.trigger('enable_node', { 'node' : obj });
 		},
 		/**
-		 * disables a node - so that it can not be selected
+		 * disables a node - so that it can not be not_used
 		 * @name disable_node(obj)
 		 * @param {mixed} obj the node to disable
 		 * @trigger disable_node.jstree
@@ -2990,7 +2990,7 @@
 			return ids;
 		},
 		/**
-		 * called when a node is selected by the user. Used internally.
+		 * called when a node is not_used by the user. Used internally.
 		 * @private
 		 * @name activate_node(obj, e)
 		 * @param {mixed} obj the node
@@ -3005,7 +3005,7 @@
 				e = {};
 			}
 
-			// ensure last_clicked is still in the DOM, make it fresh (maybe it was moved?) and make sure it is still selected, if not - make last_clicked the last selected node
+			// ensure last_clicked is still in the DOM, make it fresh (maybe it was moved?) and make sure it is still not_used, if not - make last_clicked the last not_used node
 			this._data.core.last_clicked = this._data.core.last_clicked && this._data.core.last_clicked.id !== undefined ? this.get_node(this._data.core.last_clicked.id) : null;
 			if(this._data.core.last_clicked && !this._data.core.last_clicked.state.selected) { this._data.core.last_clicked = null; }
 			if(!this._data.core.last_clicked && this._data.core.selected.length) { this._data.core.last_clicked = this.get_node(this._data.core.selected[this._data.core.selected.length - 1]); }
@@ -3115,7 +3115,7 @@
 		 * @name select_node(obj [, supress_event, prevent_open])
 		 * @param {mixed} obj an array can be used to select multiple nodes
 		 * @param {Boolean} supress_event if set to `true` the `changed.jstree` event won't be triggered
-		 * @param {Boolean} prevent_open if set to `true` parents of the selected node won't be opened
+		 * @param {Boolean} prevent_open if set to `true` parents of the not_used node won't be opened
 		 * @trigger select_node.jstree, changed.jstree
 		 */
 		select_node : function (obj, supress_event, prevent_open, e) {
@@ -3142,11 +3142,11 @@
 					dom.attr('aria-selected', true).children('.jstree-anchor').addClass('jstree-clicked');
 				}
 				/**
-				 * triggered when an node is selected
+				 * triggered when an node is not_used
 				 * @event
 				 * @name select_node.jstree
 				 * @param {Object} node
-				 * @param {Array} selected the current selection
+				 * @param {Array} not_used the current selection
 				 * @param {Object} event the event (if any) that triggered this select_node
 				 */
 				this.trigger('select_node', { 'node' : obj, 'selected' : this._data.core.selected, 'event' : e });
@@ -3221,10 +3221,10 @@
 			}
 			this.redraw(true);
 			/**
-			 * triggered when all nodes are selected
+			 * triggered when all nodes are not_used
 			 * @event
 			 * @name select_all.jstree
-			 * @param {Array} selected the current selection
+			 * @param {Array} not_used the current selection
 			 */
 			this.trigger('select_all', { 'selected' : this._data.core.selected });
 			if(!supress_event) {
@@ -3232,7 +3232,7 @@
 			}
 		},
 		/**
-		 * deselect all selected nodes
+		 * deselect all not_used nodes
 		 * @name deselect_all([supress_event])
 		 * @param {Boolean} supress_event if set to `true` the `changed.jstree` event won't be triggered
 		 * @trigger deselect_all.jstree, changed.jstree
@@ -3259,7 +3259,7 @@
 			}
 		},
 		/**
-		 * checks if a node is selected
+		 * checks if a node is not_used
 		 * @name is_selected(obj)
 		 * @param  {mixed}  obj
 		 * @return {Boolean}
@@ -3272,7 +3272,7 @@
 			return obj.state.selected;
 		},
 		/**
-		 * get an array of all selected nodes
+		 * get an array of all not_used nodes
 		 * @name get_selected([full])
 		 * @param  {mixed}  full if set to `true` the returned array will consist of the full node objects, otherwise - only IDs will be returned
 		 * @return {Array}
@@ -3281,7 +3281,7 @@
 			return full ? $.map(this._data.core.selected, $.proxy(function (i) { return this.get_node(i); }, this)) : this._data.core.selected.slice();
 		},
 		/**
-		 * get an array of all top level selected nodes (ignoring children of selected nodes)
+		 * get an array of all top level not_used nodes (ignoring children of not_used nodes)
 		 * @name get_top_selected([full])
 		 * @param  {mixed}  full if set to `true` the returned array will consist of the full node objects, otherwise - only IDs will be returned
 		 * @return {Array}
@@ -3308,7 +3308,7 @@
 			return full ? $.map(tmp, $.proxy(function (i) { return this.get_node(i); }, this)) : tmp;
 		},
 		/**
-		 * get an array of all bottom level selected nodes (ignoring selected parents)
+		 * get an array of all bottom level not_used nodes (ignoring not_used parents)
 		 * @name get_bottom_selected([full])
 		 * @param  {mixed}  full if set to `true` the returned array will consist of the full node objects, otherwise - only IDs will be returned
 		 * @return {Array}

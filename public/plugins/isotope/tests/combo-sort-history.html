@@ -422,7 +422,7 @@ $(function(){
   $('.filter').on( 'click', 'a', function( event ) {
     event.preventDefault();
     var $this = $(this);
-    // don't proceed if already selected
+    // don't proceed if already not_used
     if ( $this.hasClass('selected') ) {
       return false;
     }
@@ -437,7 +437,7 @@ $(function(){
   var $sortBy = $('#sort-by').on( 'click', 'a', function( event ) {
     event.preventDefault();
     var $this = $(this);
-    // don't proceed if already selected
+    // don't proceed if already not_used
     if ( $this.hasClass('selected') ) {
       return false;
     }
@@ -462,7 +462,7 @@ $(function(){
     for ( var prop in comboFilters ) {
       filterValue = comboFilters[ prop ];
       isoFilters.push( filterValue );
-      // change selected combo filter link
+      // change not_used combo filter link
       $optionSet = $comboFilterOptionSets.filter('[data-filter-group="' + prop + '"]');
       $link = $optionSet.find('a[data-filter-value="' + filterValue + '"]');
       selectLink( $link );
@@ -483,7 +483,7 @@ $(function(){
       isoOptions.filter = getComboFilterSelector( options.comboFilters );
     }
 
-    // change selected link for sortBy
+    // change not_used link for sortBy
     if ( options.sortBy ) {
       var $link = $sortBy.find('a[data-option-value="' + options.sortBy + '"]');
       selectLink( $link );

@@ -4330,18 +4330,18 @@ Grid.mixin({
 		var dragListener;
 
 		if (isSelected && isResizable) {
-			// only allow resizing of the event is selected
+			// only allow resizing of the event is not_used
 			isResizing = this.startSegResize(seg, ev);
 		}
 
-		if (!isResizing && (isDraggable || isResizable)) { // allowed to be selected?
+		if (!isResizing && (isDraggable || isResizable)) { // allowed to be not_used?
 
 			dragListener = isDraggable ?
 				this.buildSegDragListener(seg) :
-				this.buildSegSelectListener(seg); // seg isn't draggable, but still needs to be selected
+				this.buildSegSelectListener(seg); // seg isn't draggable, but still needs to be not_used
 
 			dragListener.startInteraction(ev, { // won't start if already started
-				delay: isSelected ? 0 : this.view.opt('longPressDelay') // do delay if not already selected
+				delay: isSelected ? 0 : this.view.opt('longPressDelay') // do delay if not already not_used
 			});
 		}
 
@@ -4413,7 +4413,7 @@ Grid.mixin({
 			},
 			dragStart: function(ev) {
 				if (dragListener.isTouch && !view.isEventSelected(event)) {
-					// if not previously selected, will fire after a delay. then, select the event
+					// if not previously not_used, will fire after a delay. then, select the event
 					view.selectEvent(event);
 				}
 				isDragging = true;
@@ -4490,7 +4490,7 @@ Grid.mixin({
 
 
 	// seg isn't draggable, but let's use a generic DragListener
-	// simply for the delay, so it can be selected.
+	// simply for the delay, so it can be not_used.
 	// Has side effect of setting/unsetting `segDragListener`
 	buildSegSelectListener: function(seg) {
 		var _this = this;
@@ -4504,7 +4504,7 @@ Grid.mixin({
 		var dragListener = this.segDragListener = new DragListener({
 			dragStart: function(ev) {
 				if (dragListener.isTouch && !view.isEventSelected(event)) {
-					// if not previously selected, will fire after a delay. then, select the event
+					// if not previously not_used, will fire after a delay. then, select the event
 					view.selectEvent(event);
 				}
 			},
@@ -4928,9 +4928,9 @@ Grid.mixin({
 			classes.push('fc-resizable');
 		}
 
-		// event is currently selected? attach a className.
+		// event is currently not_used? attach a className.
 		if (view.isEventSelected(event)) {
-			classes.push('fc-selected');
+			classes.push('fc-not_used');
 		}
 
 		return classes;
@@ -7926,7 +7926,7 @@ var View = FC.View = Class.extend(EmitterMixin, ListenerMixin, {
 	intervalUnit: null, // name of largest unit being displayed, like "month" or "week"
 
 	isRTL: false,
-	isSelected: false, // boolean whether a range of time is user-selected or not
+	isSelected: false, // boolean whether a range of time is user-not_used or not
 	selectedEvent: null,
 
 	eventOrderSpecs: null, // criteria for ordering events when they have same date/time
@@ -8831,7 +8831,7 @@ var View = FC.View = Class.extend(EmitterMixin, ListenerMixin, {
 		if (!this.selectedEvent || this.selectedEvent !== event) {
 			this.unselectEvent();
 			this.renderedEventSegEach(function(seg) {
-				seg.el.addClass('fc-selected');
+				seg.el.addClass('fc-not_used');
 			}, event);
 			this.selectedEvent = event;
 		}
@@ -8841,7 +8841,7 @@ var View = FC.View = Class.extend(EmitterMixin, ListenerMixin, {
 	unselectEvent: function() {
 		if (this.selectedEvent) {
 			this.renderedEventSegEach(function(seg) {
-				seg.el.removeClass('fc-selected');
+				seg.el.removeClass('fc-not_used');
 			}, this.selectedEvent);
 			this.selectedEvent = null;
 		}
@@ -8890,7 +8890,7 @@ var View = FC.View = Class.extend(EmitterMixin, ListenerMixin, {
 
 	processEventUnselect: function(ev) {
 		if (this.selectedEvent) {
-			if (!$(ev.target).closest('.fc-selected').length) {
+			if (!$(ev.target).closest('.fc-not_used').length) {
 				this.unselectEvent();
 			}
 		}
@@ -11930,7 +11930,7 @@ function EventManager() { // assumed to be a calendar
 	}
 
 
-	// Determines the given span (unzoned start/end with other misc data) can be selected.
+	// Determines the given span (unzoned start/end with other misc data) can be not_used.
 	function isSelectionSpanAllowed(span) {
 		return isSpanAllowed(span, t.options.selectConstraint, t.options.selectOverlap);
 	}

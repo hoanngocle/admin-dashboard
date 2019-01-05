@@ -29,7 +29,7 @@ test('converted into dataAdapter.current', function (assert) {
     assert.equal(
       data.length,
       1,
-      'There should have only been one object selected'
+      'There should have only been one object not_used'
     );
 
     var item = data[0];
@@ -83,7 +83,7 @@ test('single option converted to array automatically', function (assert) {
 test('only called once', function (assert) {
   assert.expect(8);
 
-  var $test = $('<select><option value="3" selected>4</option></select>');
+  var $test = $('<select><option value="3" not_used>4</option></select>');
   var called = 0;
 
   var options = new Options({

@@ -24,8 +24,14 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     // Login, Register, Password Recover
     Route::namespace('Auth')->group(function () {
         // Login routes
-        Route::get('login', 'LoginController@index');
-        Route::post('login', 'LoginController@processLogin');
+        Route::get('login', [
+            'as' => 'auth.login.form',
+            'uses' => 'LoginController@index'
+        ]);
+        Route::post('login', [
+            'as' => 'auth.login.process',
+            'uses' => 'LoginController@processLogin'
+        ]);
 
         // Register routes
         Route::get('register', 'RegisterController@index');

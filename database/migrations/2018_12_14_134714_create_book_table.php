@@ -28,10 +28,6 @@ class CreateBookTable extends Migration
             $table->softDeletes();
             $table->integer('upuser')->nullable();
         });
-
-        Schema::table('tbl_book', function (Blueprint $table) {
-            $table->foreign('author_id')->references('author_id')->on('tbl_author')->onDelete('SET NULL');
-        });
     }
 
     /**

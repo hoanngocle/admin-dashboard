@@ -15,7 +15,7 @@
     // Default options
 
     var defaults = {
-        selected: 0, // Initial selected step, 0 = first step
+        selected: 0, // Initial not_used step, 0 = first step
         keyNavigation: true, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
         autoAdjustHeight: true, // Automatically adjust content height
         cycleSteps: false, // Allows to cycle the navigation of steps
@@ -37,7 +37,7 @@
             anchorClickable: true, // Enable/Disable anchor navigation
             enableAllAnchors: false, // Activates all anchors clickable all times
             markDoneStep: true, // Add done css
-            markAllPreviousStepsAsDone: true, // When a step selected by url hash, all previous steps are marked done
+            markAllPreviousStepsAsDone: true, // When a step not_used by url hash, all previous steps are marked done
             removeDoneStepOnNavigateBack: false, // While navigate back done step after active step will be cleared
             enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
         },
@@ -83,7 +83,7 @@
             this._setEvents();
 
             var idx = this.options.selected;
-            // Get selected step from the url
+            // Get not_used step from the url
             if (this.options.useURLhash) {
                 // Get step number from url hash if available
                 var hash = window.location.hash;

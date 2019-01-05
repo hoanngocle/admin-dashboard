@@ -24,12 +24,6 @@ class CreateLibraryTable extends Migration
             $table->softDeletes();
             $table->integer('upuser')->nullable();
         });
-
-        Schema::table('tbl_library', function (Blueprint $table) {
-            $table->foreign('member_id')->references('member_id')->on('tbl_member')->onDelete('SET NULL');
-            $table->foreign('book_id')->references('book_id')->on('tbl_book')->onDelete('SET NULL');
-            $table->foreign('author_id')->references('author_id')->on('tbl_book')->onDelete('SET NULL');
-        });
     }
 
     /**

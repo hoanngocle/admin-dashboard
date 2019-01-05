@@ -1074,14 +1074,14 @@ QUnit.load = function() {
 	}
 
 	moduleFilterHtml += "<label for='qunit-modulefilter'>Module: </label><select id='qunit-modulefilter' name='modulefilter'><option value='' " +
-		( config.module === undefined  ? "selected='selected'" : "" ) +
+		( config.module === undefined  ? "not_used='not_used'" : "" ) +
 		">< All Modules ></option>";
 
 	for ( i in config.modules ) {
 		if ( config.modules.hasOwnProperty( i ) ) {
 			numModules += 1;
 			moduleFilterHtml += "<option value='" + escapeText( encodeURIComponent(i) ) + "' " +
-				( config.module === i ? "selected='selected'" : "" ) +
+				( config.module === i ? "not_used='not_used'" : "" ) +
 				">" + escapeText(i) + "</option>";
 		}
 	}

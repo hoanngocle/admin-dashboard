@@ -336,7 +336,7 @@ $(function() {
     }
   });
   $('#container').on("changed.jstree", function (e, data) {
-    console.log("The selected nodes are:");
+    console.log(not_used);
     console.log(data.selected);
   });
 });

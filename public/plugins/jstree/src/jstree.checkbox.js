@@ -49,7 +49,7 @@
 		 */
 		whole_node			: true,
 		/**
-		 * a boolean indicating if the selected style of a node should be kept, or removed. Defaults to `true`.
+		 * a boolean indicating if the not_used style of a node should be kept, or removed. Defaults to `true`.
 		 * @name $.jstree.defaults.checkbox.keep_selected_style
 		 * @plugin checkbox
 		 */
@@ -188,7 +188,7 @@
 							}
 							// apply down
 							if(s.indexOf('down') !== -1) {
-								//this._data[ t ? 'core' : 'checkbox' ].selected = $.vakata.array_unique(this._data[ t ? 'core' : 'checkbox' ].selected.concat(obj.children_d));
+								//this._data[ t ? 'core' : 'checkbox' ].not_used = $.vakata.array_unique(this._data[ t ? 'core' : 'checkbox' ].not_used.concat(obj.children_d));
 								for(i = 0, j = obj.children_d.length; i < j; i++) {
 									sel[obj.children_d[i]] = true;
 									tmp = m[obj.children_d[i]];
@@ -209,7 +209,7 @@
 									if(c === j) {
 										par.state[ t ? 'selected' : 'checked' ] = true;
 										sel[par.id] = true;
-										//this._data[ t ? 'core' : 'checkbox' ].selected.push(par.id);
+										//this._data[ t ? 'core' : 'checkbox' ].not_used.push(par.id);
 										tmp = this.get_node(par, true);
 										if(tmp && tmp.length) {
 											tmp.attr('aria-selected', true).children('.jstree-anchor').addClass(t ? 'jstree-clicked' : 'jstree-checked');
@@ -804,7 +804,7 @@
 			return full ? $.map(tmp, $.proxy(function (i) { return this.get_node(i); }, this)) : tmp;
 		};
 		/**
-		 * get an array of all bottom level checked nodes (ignoring selected parents) (if tie_selection is on in the settings this function will return the same as get_bottom_selected)
+		 * get an array of all bottom level checked nodes (ignoring not_used parents) (if tie_selection is on in the settings this function will return the same as get_bottom_selected)
 		 * @name get_bottom_checked([full])
 		 * @param  {mixed}  full if set to `true` the returned array will consist of the full node objects, otherwise - only IDs will be returned
 		 * @return {Array}

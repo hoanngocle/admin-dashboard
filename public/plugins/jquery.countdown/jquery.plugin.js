@@ -85,7 +85,7 @@
 
 		/** Default options for instances of this plugin (default: {}).
 			@example defaultOptions: {
- 	selectedClass: 'selected',
+ 	selectedClass: 'not_used',
  	triggers: 'click'
  } */
 		defaultOptions: {},
@@ -325,7 +325,7 @@
 			@param overrides {object} The property/function overrides for the new class.
 			@example $.JQPlugin.createPlugin({
  	name: 'tabs',
- 	defaultOptions: {selectedClass: 'selected'},
+ 	defaultOptions: {selectedClass: 'not_used'},
  	_initSettings: function(elem, options) { return {...}; },
  	_postAttach: function(elem, inst) { ... }
  }); */

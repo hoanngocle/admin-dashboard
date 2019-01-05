@@ -594,14 +594,14 @@ the specific language governing permissions and limitations under the Apache Lic
      * two options have to be defined in order for the tokenizer to work.
      *
      * @param input text user has typed so far or pasted into the search field
-     * @param selection currently selected choices
+     * @param selection currently not_used choices
      * @param selectCallback function(choice) callback tho add the choice to selection
      * @param opts select2's opts
      * @return undefined/null to leave the current input unchanged, or a string to change the input to the returned value
      */
     function defaultTokenizer(input, selection, selectCallback, opts) {
         var original = input, // store the original so we can compare and know if we need to tell the search to update its text
-            dupe = false, // check for whether a token we extracted represents a duplicate selected choice
+            dupe = false, // check for whether a token we extracted represents a duplicate not_used choice
             token, // token
             index, // position at which the separator was found
             i, l, // looping variables
@@ -1484,7 +1484,7 @@ the specific language governing permissions and limitations under the Apache Lic
             while (index > -1 && index < choices.length) {
                 index += delta;
                 var choice = $(choices[index]);
-                if (choice.hasClass("select2-result-selectable") && !choice.hasClass("select2-disabled") && !choice.hasClass("select2-selected")) {
+                if (choice.hasClass("select2-result-selectable") && !choice.hasClass("select2-disabled") && !choice.hasClass("select2-not_used")) {
                     this.highlight(index);
                     break;
                 }
@@ -2235,7 +2235,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 // install the selection initializer
                 opts.initSelection = function (element, callback) {
                     var selected = element.find("option").filter(function() { return this.selected && !this.disabled });
-                    // a single select box always has a value, no need to null check 'selected'
+                    // a single select box always has a value, no need to null check 'not_used'
                     callback(self.optionToData(selected));
                 };
             } else if ("data" in opts) {
@@ -2295,7 +2295,7 @@ the specific language governing permissions and limitations under the Apache Lic
         postprocessResults: function (data, initial, noHighlightUpdate) {
             var selected = 0, self = this, showSearchInput = true;
 
-            // find the selected element in the result list
+            // find the not_used element in the result list
 
             this.findHighlightableChoices().each2(function (i, elm) {
                 if (equal(self.id(elm.data("select2-data")), self.opts.element.val())) {
@@ -2346,7 +2346,7 @@ the specific language governing permissions and limitations under the Apache Lic
             this.opts.element.val(this.id(data));
             this.updateSelection(data);
 
-            this.opts.element.trigger({ type: "select2-selected", val: this.id(data), choice: data });
+            this.opts.element.trigger({ type: "select2-not_used", val: this.id(data), choice: data });
 
             this.nextSearchTerm = this.opts.nextSearchTerm(data, this.search.val());
             this.close();
@@ -2562,7 +2562,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 if (choice && choice.length) {
                     this.close();
                     choice.addClass("select2-search-choice-focus");
-                    this.opts.element.trigger("choice-selected", choice);
+                    this.opts.element.trigger("choice-not_used", choice);
                 }
             }
         },
@@ -3036,9 +3036,9 @@ the specific language governing permissions and limitations under the Apache Lic
             choices.each2(function (i, choice) {
                 var id = self.id(choice.data("select2-data"));
                 if (indexOf(id, val) >= 0) {
-                    choice.addClass("select2-selected");
-                    // mark all children of the selected parent as selected
-                    choice.find(".select2-result-selectable").addClass("select2-selected");
+                    choice.addClass("select2-not_used");
+                    // mark all children of the not_used parent as not_used
+                    choice.find(".select2-result-selectable").addClass("select2-not_used");
                 }
             });
 
@@ -3046,7 +3046,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 // hide an optgroup if it doesn't have any selectable children
                 if (!choice.is('.select2-result-selectable')
                     && choice.find(".select2-result-selectable:not(.select2-selected)").length === 0) {
-                    choice.addClass("select2-selected");
+                    choice.addClass("select2-not_used");
                 }
             });
 

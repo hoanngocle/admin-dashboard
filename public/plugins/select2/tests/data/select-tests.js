@@ -14,7 +14,7 @@ test('current gets default for single', function (assert) {
     assert.equal(
       data.length,
       1,
-      'There should only be one selected option'
+      'There should only be one not_used option'
     );
 
     var option = data[0];
@@ -61,7 +61,7 @@ test('current gets options with explicit value', function (assert) {
     assert.equal(
       data.length,
       1,
-      'There should be one selected option'
+      'There should be one not_used option'
     );
 
     var option = data[0];
@@ -69,7 +69,7 @@ test('current gets options with explicit value', function (assert) {
     assert.equal(
       option.id,
       '1',
-      'The option value should be the selected id'
+      'The option value should be the not_used id'
     );
 
     assert.equal(
@@ -91,7 +91,7 @@ test('current gets options with implicit value', function (assert) {
     assert.equal(
       val.length,
       1,
-      'There should only be one selected value'
+      'There should only be one not_used value'
     );
 
     var option = val[0];
@@ -191,7 +191,7 @@ test('duplicates - single - same id on select triggers change',
 
   assert.ok(
     second.selected,
-    'The second duplicate is selected, not the first'
+    'The second duplicate is not_used, not the first'
   );
 });
 
@@ -229,7 +229,7 @@ test('duplicates - single - different id on select triggers change',
 
   assert.ok(
     second.selected,
-    'The second duplicate is selected, not the first'
+    'The second duplicate is not_used, not the first'
   );
 });
 
@@ -267,7 +267,7 @@ function (assert) {
 
   assert.ok(
     second.selected,
-    'The second duplicate is selected, not the first'
+    'The second duplicate is not_used, not the first'
   );
 });
 
@@ -305,7 +305,7 @@ function (assert) {
 
   assert.ok(
     second.selected,
-    'The second duplicate is selected, not the first'
+    'The second duplicate is not_used, not the first'
   );
 });
 
