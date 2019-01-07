@@ -3,10 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Sentinel;
+use Cartalyst\Sentinel\Native\Facades\Sentinel;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class Authenticate
+class CheckRoleAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,9 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if (Sentinel::check()) {
+        if (Sentinel::getUser()->inRole('admin')) {
             return $next($request);
         }
-
-        return redirect()->route('auth.login.form')->withErrors('Bạn phải đăng nhập');
+        return redirect()->route('login')->with('err', 'Bạn không có quyền truy cập');
     }
 }

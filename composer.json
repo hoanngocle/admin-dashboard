@@ -9,10 +9,14 @@
         "cartalyst/sentinel": "2.0.*",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
+        "illuminate/database": "^5.7",
+        "illuminate/events": "^5.7",
         "laravel/framework": "5.7.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "symfony/http-foundation": "^4.2"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",

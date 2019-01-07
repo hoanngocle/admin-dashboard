@@ -53,7 +53,7 @@ return [
 
     'users' => [
 
-        'model' => 'App\Models\AdminUser',
+        'model' => 'App\Models\Users',
 
     ],
 

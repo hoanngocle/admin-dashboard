@@ -24,6 +24,9 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     // Login, Register, Password Recover
     Route::namespace('Auth')->group(function () {
         // Login routes
+        Route::group(['middleware' => ['auth','check.admin']], function () {
+
+        });
         Route::get('login', [
             'as' => 'auth.login.form',
             'uses' => 'LoginController@index'

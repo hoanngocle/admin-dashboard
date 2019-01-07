@@ -2,21 +2,25 @@
 
 namespace App\Models;
 
-use Cartalyst\Sentinel\Users\EloquentUser;
+use Illuminate\Notifications\Notifiable;
+use Cartalyst\Sentinel\Users\EloquentUser as CartalystUser;
 
-class AdminUser extends EloquentUser
+class Users extends CartalystUser
 {
     use Notifiable;
 
-    protected $guard = 'admin';
-
+    protected $primaryKey = 'member_id';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'username', 'password'
+        'member_code',
+        'email',
+        'username',
+        'password',
+        'nickname'
     ];
 
     /**
@@ -25,6 +29,6 @@ class AdminUser extends EloquentUser
      * @var array
      */
     protected $hidden = [
-        'password'
+        'password', 'remember',
     ];
 }
