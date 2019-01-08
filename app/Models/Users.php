@@ -9,18 +9,19 @@ class Users extends CartalystUser
 {
     use Notifiable;
 
-    protected $primaryKey = 'member_id';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'member_code',
         'email',
         'username',
-        'password',
-        'nickname'
+        'password'
+    ];
+
+    protected $loginNames = [
+        'username'
     ];
 
     /**

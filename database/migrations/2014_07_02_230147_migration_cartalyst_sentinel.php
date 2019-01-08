@@ -94,13 +94,14 @@ class MigrationCartalystSentinel extends Migration
         });
 
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('member_id');
+            $table->increments('id');
             $table->string('member_code', 12);
             $table->string('email', 255)->unique();
             $table->string('username', 255)->unique();
             $table->string('password', 255);
             $table->dateTime('password_expried_time');
-            $table->dateTime('log_date')->nullable()->comment('Show last login time of admin');
+            $table->text('permissions')->nullable();
+            $table->dateTime('last_login')->nullable()->comment('Show last login time of admin');
             $table->integer('log_num')->unsigned()->default(1)->comment('Count login times of admin');
             $table->enum('is_online', ['Online', 'Offline'])->default('Offline')->comment('Member status');
             $table->string('nickname', 50);

@@ -19,8 +19,6 @@ class LoginController extends Controller
     |
     */
 
-//    use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
@@ -51,7 +49,8 @@ class LoginController extends Controller
     public function processLogin(Login $request)
     {
         try {
-            if (Sentinel::authenticate($request->all())) {
+            $remember = (boolean) $request->get('remember');
+            if (Sentinel::authenticate($request->all(), $remember)) {
                 return redirect()->intended($this->redirectTo);
             } else {
                 $err = "Tên đăng nhập hoặc mật khẩu không đúng!";
