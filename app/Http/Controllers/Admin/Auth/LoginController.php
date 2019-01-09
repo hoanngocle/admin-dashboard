@@ -78,6 +78,6 @@ class LoginController extends Controller
     {
         Sentinel::logout(null, true);
 
-        return redirect()->route('/login')->withErrors('You have been logout.');
+        return redirect()->route('auth.login.form')->withErrors(__('logout_msg'));
     }
 }

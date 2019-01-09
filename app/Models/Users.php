@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Sentinel;
 use Illuminate\Notifications\Notifiable;
 use Cartalyst\Sentinel\Users\EloquentUser as CartalystUser;
 
@@ -17,7 +18,8 @@ class Users extends CartalystUser
     protected $fillable = [
         'email',
         'username',
-        'password'
+        'password',
+        'remember'
     ];
 
     protected $loginNames = [
@@ -32,4 +34,19 @@ class Users extends CartalystUser
     protected $hidden = [
         'password', 'remember',
     ];
+
+    /**
+     * return username of user
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        $nickname = Sentinel::getUser()->nickname;
+        if ($nickname == '') {
+            $nickname = Sentinel::getUser()->getUserLoginName();
+        }
+
+        return $nickname;
+    }
 }

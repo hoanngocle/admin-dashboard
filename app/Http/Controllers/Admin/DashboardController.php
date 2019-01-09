@@ -4,9 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Sentinel;
 
 class DashboardController extends Controller
 {
+    protected $userFactory;
+
+    public function __construct(
+        \App\Models\Users $userFactory
+    ) {
+        $this->userFactory = $userFactory;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.dashboard');
+        $nickName = $this->userFactory->getUsername();
+        return view('admin.pages.dashboard', [
+            'nickname' => $nickName
+        ]);
     }
 
     /**

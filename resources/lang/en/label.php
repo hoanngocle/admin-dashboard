@@ -1,10 +1,16 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: hoanc
+ * Date: 1/9/2019
+ * Time: 5:30 PM
+ */
 
 return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Language Lines
+    | Label Language Line
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various
@@ -12,9 +18,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'logout_msg' => 'You have been logout.'
+    'username' => 'Username',
+    'password' => 'Password',
+    'remember_me' => 'Remember Me',
+    'sign_in' => 'Sign me in',
 
 ];
