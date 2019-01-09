@@ -14520,7 +14520,7 @@ namespace  {
             }
          
             /**
-             * Set the columns to be selected.
+             * Set the columns to be not_used.
              *
              * @param array|mixed $columns
              * @return $this 
@@ -15646,7 +15646,7 @@ namespace  {
             }
          
             /**
-             * Lock the selected rows in the table.
+             * Lock the not_used rows in the table.
              *
              * @param string|bool $value
              * @return $this 
@@ -15658,7 +15658,7 @@ namespace  {
             }
          
             /**
-             * Lock the selected rows in the table for updating.
+             * Lock the not_used rows in the table for updating.
              *
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -15669,7 +15669,7 @@ namespace  {
             }
          
             /**
-             * Share lock the selected rows in the table.
+             * Share lock the not_used rows in the table.
              *
              * @return \Illuminate\Database\Query\Builder 
              * @static 

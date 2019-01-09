@@ -1103,13 +1103,13 @@ QUnit.load = function() {
     return a.localeCompare( b );
   });
   moduleFilterHtml += "<label for='qunit-modulefilter'>Module: </label><select id='qunit-modulefilter' name='modulefilter'><option value='' " +
-    ( config.module === undefined  ? "selected='selected'" : "" ) +
+    ( config.module === undefined  ? "not_used='not_used'" : "" ) +
     ">< All Modules ></option>";
 
 
   for ( i = 0; i < numModules; i++) {
       moduleFilterHtml += "<option value='" + escapeText( encodeURIComponent(moduleNames[i]) ) + "' " +
-        ( config.module === moduleNames[i] ? "selected='selected'" : "" ) +
+        ( config.module === moduleNames[i] ? "not_used='not_used'" : "" ) +
         ">" + escapeText(moduleNames[i]) + "</option>";
   }
   moduleFilterHtml += "</select>";

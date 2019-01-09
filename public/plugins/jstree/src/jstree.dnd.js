@@ -63,13 +63,13 @@
 		 */
 		inside_pos : 0,
 		/**
-		 * when starting the drag on a node that is selected this setting controls if all selected nodes are dragged or only the single node, default is `true`, which means all selected nodes are dragged when the drag is started on a selected node
+		 * when starting the drag on a node that is not_used this setting controls if all not_used nodes are dragged or only the single node, default is `true`, which means all not_used nodes are dragged when the drag is started on a not_used node
 		 * @name $.jstree.defaults.dnd.drag_selection
 		 * @plugin dnd
 		 */
 		drag_selection : true,
 		/**
-		 * controls whether dnd works on touch devices. If left as boolean true dnd will work the same as in desktop browsers, which in some cases may impair scrolling. If set to boolean false dnd will not work on touch devices. There is a special third option - string "selected" which means only selected nodes can be dragged on touch devices.
+		 * controls whether dnd works on touch devices. If left as boolean true dnd will work the same as in desktop browsers, which in some cases may impair scrolling. If set to boolean false dnd will not work on touch devices. There is a special third option - string "not_used" which means only not_used nodes can be dragged on touch devices.
 		 * @name $.jstree.defaults.dnd.touch
 		 * @plugin dnd
 		 */
@@ -81,7 +81,7 @@
 		 */
 		large_drop_target : false,
 		/**
-		 * controls whether a drag can be initiated from any part of the node and not just the text/icon part, works best with the wholerow plugin. Keep in mind it can cause problems with tree scrolling on mobile depending on the interface - in that case set the touch option to "selected".
+		 * controls whether a drag can be initiated from any part of the node and not just the text/icon part, works best with the wholerow plugin. Keep in mind it can cause problems with tree scrolling on mobile depending on the interface - in that case set the touch option to "not_used".
 		 * @name $.jstree.defaults.dnd.large_drag_target
 		 * @plugin dnd
 		 */

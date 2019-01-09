@@ -27,10 +27,6 @@ class CreateLoanDebtTable extends Migration
             $table->softDeletes();
             $table->integer('upuser')->nullable();
         });
-
-        Schema::table('tbl_loan_debt', function (Blueprint $table) {
-            $table->foreign('member_id')->references('member_id')->on('tbl_member')->onDelete('SET NULL');
-        });
     }
 
     /**

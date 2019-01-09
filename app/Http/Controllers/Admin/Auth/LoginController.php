@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Requests\Login;
+use Sentinel;
 
 class LoginController extends Controller
 {
@@ -18,14 +19,12 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -34,16 +33,51 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('guest')->except('logout');
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
+    /**
+     * content html page login
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        return view('admin.auth.login');
+        return view('admin.pages.auth.login');
     }
 
-    public function processLogin()
+    /**
+     * login function
+     * @param Login $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function processLogin(Login $request)
     {
-        return 'processLogin';
+        try {
+            $remember = (boolean) $request->get('remember');
+            if (Sentinel::authenticate($request->all(), $remember)) {
+                return redirect()->intended($this->redirectTo);
+            } else {
+                $err = "Tên đăng nhập hoặc mật khẩu không đúng!";
+            }
+        } catch (NotActivatedException $e) {
+            $err = "Tài khoản của bạn chưa được kích hoạt";
+        } catch (ThrottlingException $e) {
+            $delay = $e->getDelay();
+            $err = "Tài khoản của bạn bị block trong vòng {$delay} sec";
+        }
+        return redirect()->back()
+            ->withInput()
+            ->with('err', $err);
+    }
+
+    /**
+     * Destroy all sessions for the current logged in user
+     *
+     */
+    public function logout()
+    {
+        Sentinel::logout(null, true);
+
+        return redirect()->route('auth.login.form')->withErrors(__('logout_msg'));
     }
 }

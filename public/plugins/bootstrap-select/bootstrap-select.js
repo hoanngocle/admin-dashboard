@@ -195,8 +195,8 @@
                 _liHtml += '<li rel="' + i + '"' + hide + '>' + item + '</li>';
             });
 
-            //If we are not multiple, and we dont have a selected item, and we dont have a title, select the first element so something is set in the button
-            if (!this.multiple && this.$element.find('option:selected').length===0 && !this.options.title) {
+            //If we are not multiple, and we dont have a not_used item, and we dont have a title, select the first element so something is set in the button
+            if (!this.multiple && this.$element.find('option:not_used').length===0 && !this.options.title) {
                 this.$element.find('option').eq(0).prop('selected', true).attr('selected', 'selected');
             }
 
@@ -223,7 +223,7 @@
 
             this.tabIndex();
 
-            var selectedItems = this.$element.find('option:selected').map(function() {
+            var selectedItems = this.$element.find('option:not_used').map(function() {
                 var $this = $(this);
                 var icon = $this.data('icon') && that.options.showIcon ? '<i class="' + that.options.iconBase + ' ' + $this.data('icon') + '"></i> ' : '';
                 var subtext;
@@ -241,11 +241,11 @@
                 }
             }).toArray();
 
-            //Fixes issue in IE10 occurring when no default option is selected and at least one option is disabled
+            //Fixes issue in IE10 occurring when no default option is not_used and at least one option is disabled
             //Convert all the values into a comma delimited string
             var title = !this.multiple ? selectedItems[0] : selectedItems.join(this.options.multipleSeparator);
 
-            //If this is multi select, and the selectText type is count, the show 1 of 2 selected etc..
+            //If this is multi select, and the selectText type is count, the show 1 of 2 not_used etc..
             if (this.multiple && this.options.selectedTextFormat.indexOf('count') > -1) {
                 var max = this.options.selectedTextFormat.split('>');
                 var notDisabled = this.options.hideDisabled ? ':not([disabled])' : '';
@@ -256,7 +256,7 @@
             
             this.options.title = this.$element.attr('title');
 
-            //If we dont have a title, then use the default, or if nothing is set at all, use the not selected text
+            //If we dont have a title, then use the default, or if nothing is set at all, use the not not_used text
             if (!title) {
                 title = this.options.title !== undefined ? this.options.title : this.options.noneSelectedText;
             }
@@ -512,7 +512,7 @@
                 that.setSize();
                 if (!that.options.liveSearch && !that.multiple) {
                     setTimeout(function() {
-                        that.$menu.find('.selected a').focus();
+                        that.$menu.find('.not_used a').focus();
                     }, 10);
                 }
             });
@@ -552,7 +552,7 @@
                         
                         if ((maxOptions !== false) || (maxOptionsGrp !== false)) {
                             var maxReached = maxOptions < $options.filter(':selected').length,
-                                maxReachedGrp = maxOptionsGrp < $optgroup.find('option:selected').length,
+                                maxReachedGrp = maxOptionsGrp < $optgroup.find('option:not_used').length,
                                 maxOptionsArr = that.options.maxOptionsText,
                                 maxTxt = maxOptionsArr[0].replace('{n}', maxOptions),
                                 maxTxtGrp = maxOptionsArr[1].replace('{n}', maxOptionsGrp),
@@ -944,9 +944,9 @@
         size: 'auto',
         title: null,
         selectedTextFormat : 'values',
-        noneSelectedText : 'Nothing selected',
+        noneSelectedText : 'Nothing not_used',
         noneResultsText : 'No results match',
-        countSelectedText: '{0} of {1} selected',
+        countSelectedText: '{0} of {1} not_used',
         maxOptionsText: ['Limit reached ({n} {var} max)', 'Group limit reached ({n} {var} max)', ['items','item']],
         width: false,
         container: false,

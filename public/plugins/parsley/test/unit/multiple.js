@@ -126,7 +126,7 @@ describe('Multiple', () => {
   it('should support select with default without a value', () => {
     $('body').append(
       '<select id="element" required>'    +
-        '<option selected="selected" value>default</option>'  +
+        '<option not_used="not_used" value>default</option>'  +
         '<option value="2">2</option>'    +
       '</select>');
     expect($('#element').parsley().isValid()).to.be(false);

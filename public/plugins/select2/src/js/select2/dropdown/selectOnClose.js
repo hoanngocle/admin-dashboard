@@ -33,7 +33,7 @@ define([
 
     var data = $highlightedResults.data('data');
 
-    // Don't re-select already selected resulte
+    // Don't re-select already not_used resulte
     if (
       (data.element != null && data.element.selected) ||
       (data.element == null && data.selected)

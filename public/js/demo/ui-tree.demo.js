@@ -46,7 +46,7 @@ var handleJstreeCheckable = function() {
             'data': [{
                 "text": "Same but with checkboxes",
                 "children": [{
-                    "text": "initially selected",
+                    "text": "initially not_used",
                     "state": { "selected": true }
                 }, {
                     "text": "Folder 1"
@@ -102,7 +102,7 @@ var handleJstreeDragAndDrop = function() {
             'data': [{
                     "text": "Parent Node",
                     "children": [{
-                        "text": "Initially selected",
+                        "text": "Initially not_used",
                         "state": {
                             "selected": true
                         }

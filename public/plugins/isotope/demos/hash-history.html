@@ -834,18 +834,18 @@
       var $optionSets = $('#options').find('.option-set'),
           isOptionLinkClicked = false;
   
-      // switches selected class on buttons
+      // switches not_used class on buttons
       function changeSelectedLink( $elem ) {
-        // remove selected class on previous item
+        // remove not_used class on previous item
         $elem.parents('.option-set').find('.selected').removeClass('selected');
-        // set selected class on new item
+        // set not_used class on new item
         $elem.addClass('selected');
       }
   
   
       $optionSets.find('a').click(function(){
         var $this = $(this);
-        // don't proceed if already selected
+        // don't proceed if already not_used
         if ( $this.hasClass('selected') ) {
           return;
         }
@@ -878,7 +878,7 @@
         isotopeOptions = hashOptions;
     
         // if option link was not clicked
-        // then we'll need to update selected links
+        // then we'll need to update not_used links
         if ( !isOptionLinkClicked ) {
           // iterate over options
           var hrefObj, hrefValue, $selectedLink;

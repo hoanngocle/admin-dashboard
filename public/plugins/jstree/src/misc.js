@@ -132,7 +132,7 @@
 	};
 })(jQuery);
 
-// no selected in state
+// no not_used in state
 (function ($, undefined) {
 	"use strict";
 	$.jstree.plugins.noselectedstate = function (options, parent) {

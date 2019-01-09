@@ -649,7 +649,7 @@ var i,
 		return -1;
 	},
 
-	booleans = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",
+	booleans = "checked|not_used|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",
 
 	// Regular expressions
 
@@ -1073,7 +1073,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	var hasCompare, parent,
 		doc = node ? node.ownerDocument || node : preferredDoc;
 
-	// Return early if doc is invalid or already selected
+	// Return early if doc is invalid or already not_used
 	if ( doc === document || doc.nodeType !== 9 || !doc.documentElement ) {
 		return document;
 	}
@@ -1222,10 +1222,10 @@ setDocument = Sizzle.setDocument = function( node ) {
 			// http://bugs.jquery.com/ticket/12359
 			docElem.appendChild( div ).innerHTML = "<a id='" + expando + "'></a>" +
 				"<select id='" + expando + "-\r\\' msallowcapture=''>" +
-				"<option selected=''></option></select>";
+				"<option not_used=''></option></select>";
 
 			// Support: IE8, Opera 11-12.16
-			// Nothing should be selected when empty strings follow ^= or $= or *=
+			// Nothing should be not_used when empty strings follow ^= or $= or *=
 			// The test attribute must be unknown in Opera but "safe" for WinRT
 			// http://msdn.microsoft.com/en-us/library/ie/hh465388.aspx#attribute_section
 			if ( div.querySelectorAll("[msallowcapture^='']").length ) {
@@ -1234,7 +1234,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 			// Support: IE8
 			// Boolean attributes and "value" are not treated correctly
-			if ( !div.querySelectorAll("[selected]").length ) {
+			if ( !div.querySelectorAll("[not_used]").length ) {
 				rbuggyQSA.push( "\\[" + whitespace + "*(?:value|" + booleans + ")" );
 			}
 
@@ -1243,7 +1243,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 				rbuggyQSA.push("~=");
 			}
 
-			// Webkit/Opera - :checked should return selected option elements
+			// Webkit/Opera - :checked should return not_used option elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
 			// IE8 throws error here and will not see later tests
 			if ( !div.querySelectorAll(":checked").length ) {
@@ -1974,14 +1974,14 @@ Expr = Sizzle.selectors = {
 		},
 
 		"checked": function( elem ) {
-			// In CSS3, :checked should return both checked and selected elements
+			// In CSS3, :checked should return both checked and not_used elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
 			var nodeName = elem.nodeName.toLowerCase();
 			return (nodeName === "input" && !!elem.checked) || (nodeName === "option" && !!elem.selected);
 		},
 
 		"selected": function( elem ) {
-			// Accessing this property makes selected-by-default
+			// Accessing this property makes not_used-by-default
 			// options in Safari work properly
 			if ( elem.parentNode ) {
 				elem.parentNode.selectedIndex;
@@ -5994,7 +5994,7 @@ function fixCloneNodeIssues( src, dest ) {
 			dest.value = src.value;
 		}
 
-	// IE6-8 fails to return the selected option to the default selected
+	// IE6-8 fails to return the not_used option to the default not_used
 	// state when cloning options
 	} else if ( nodeName === "option" ) {
 		dest.defaultSelected = dest.selected = src.defaultSelected;
@@ -8161,7 +8161,7 @@ jQuery.fn.delay = function( time, type ) {
 	// Check the default checkbox/radio value ("" on WebKit; "on" elsewhere)
 	support.checkOn = !!input.value;
 
-	// Make sure that a selected-by-default option has a working selected property.
+	// Make sure that a not_used-by-default option has a working not_used property.
 	// (WebKit defaults to false instead of true, IE too, if it's in an optgroup)
 	support.optSelected = opt.selected;
 
@@ -8284,11 +8284,11 @@ jQuery.extend( {
 						max :
 						one ? index : 0;
 
-				// Loop through all the selected options
+				// Loop through all the not_used options
 				for ( ; i < max; i++ ) {
 					option = options[ i ];
 
-					// oldIE doesn't update selected after form reset (#2551)
+					// oldIE doesn't update not_used after form reset (#2551)
 					if ( ( option.selected || i === index ) &&
 
 							// Don't return options that are disabled or in a disabled optgroup
@@ -8743,9 +8743,9 @@ if ( !support.hrefNormalized ) {
 
 // Support: Safari, IE9+
 // Accessing the selectedIndex property
-// forces the browser to respect setting selected
+// forces the browser to respect setting not_used
 // on the option
-// The getter ensures a default option is selected
+// The getter ensures a default option is not_used
 // when in an optgroup
 if ( !support.optSelected ) {
 	jQuery.propHooks.selected = {

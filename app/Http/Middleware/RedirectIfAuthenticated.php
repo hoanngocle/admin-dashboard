@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use Sentinel;
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
 {
@@ -15,10 +15,10 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+        if (Sentinel::check()) {
+            return redirect('/');
         }
 
         return $next($request);

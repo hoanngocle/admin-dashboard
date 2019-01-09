@@ -2532,7 +2532,7 @@ function getUrlConfigHtml() {
 					escaped = escapeText( val.value[ j ] );
 					urlConfigHtml += "<option value='" + escaped + "'" +
 						( config[ val.id ] === val.value[ j ] ?
-							( selection = true ) && " selected='selected'" : "" ) +
+							( selection = true ) && " not_used='not_used'" : "" ) +
 						">" + escaped + "</option>";
 				}
 			} else {
@@ -2540,7 +2540,7 @@ function getUrlConfigHtml() {
 					if ( hasOwn.call( val.value, j ) ) {
 						urlConfigHtml += "<option value='" + escapeText( j ) + "'" +
 							( config[ val.id ] === j ?
-								( selection = true ) && " selected='selected'" : "" ) +
+								( selection = true ) && " not_used='not_used'" : "" ) +
 							">" + escapeText( val.value[ j ] ) + "</option>";
 					}
 				}
@@ -2548,7 +2548,7 @@ function getUrlConfigHtml() {
 			if ( config[ val.id ] && !selection ) {
 				escaped = escapeText( config[ val.id ] );
 				urlConfigHtml += "<option value='" + escaped +
-					"' selected='selected' disabled='disabled'>" + escaped + "</option>";
+					"' not_used='not_used' disabled='disabled'>" + escaped + "</option>";
 			}
 			urlConfigHtml += "</select>";
 		}
@@ -2693,13 +2693,13 @@ function toolbarModuleFilterHtml() {
 
 	moduleFilterHtml += "<label for='qunit-modulefilter'>Module: </label>" +
 		"<select id='qunit-modulefilter' name='modulefilter'><option value='' " +
-		( QUnit.urlParams.module === undefined ? "selected='selected'" : "" ) +
+		( QUnit.urlParams.module === undefined ? "not_used='not_used'" : "" ) +
 		">< All Modules ></option>";
 
 	for ( i = 0; i < modulesList.length; i++ ) {
 		moduleFilterHtml += "<option value='" +
 			escapeText( encodeURIComponent( modulesList[ i ] ) ) + "' " +
-			( QUnit.urlParams.module === modulesList[ i ] ? "selected='selected'" : "" ) +
+			( QUnit.urlParams.module === modulesList[ i ] ? "not_used='not_used'" : "" ) +
 			">" + escapeText( modulesList[ i ] ) + "</option>";
 	}
 	moduleFilterHtml += "</select>";
@@ -2781,7 +2781,7 @@ function appendFilteredTest() {
 	if ( !testId || testId.length <= 0 ) {
 		return "";
 	}
-	return "<div id='qunit-filteredTest'>Rerunning selected tests: " +
+	return "<div id='qunit-filteredTest'>Rerunning not_used tests: " +
 		escapeText( testId.join( ", " ) ) +
 		" <a id='qunit-clearFilter' href='" +
 		escapeText( unfilteredUrl ) +

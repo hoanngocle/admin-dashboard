@@ -55,7 +55,7 @@ class fs
 	public function data($id) {
 		if(strpos($id, ":")) {
 			$id = array_map(array($this, 'id'), explode(':', $id));
-			return array('type'=>'multiple', 'content'=> 'Multiple selected: ' . implode(' ', $id));
+			return array('type'=>'multiple', 'content'=> 'Multiple not_used: ' . implode(' ', $id));
 		}
 		$dir = $this->path($id);
 		if(is_dir($dir)) {

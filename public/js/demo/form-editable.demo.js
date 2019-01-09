@@ -88,7 +88,7 @@ var handleEditableFieldConstruct = function() {
         }
     });
     $('#sex').editable({
-        prepend: 'not selected',
+        prepend: 'not not_used',
         source: [
             {value: 1, text: 'Male'},
             {value: 2, text: 'Female'}

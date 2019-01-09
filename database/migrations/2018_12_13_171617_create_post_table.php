@@ -24,11 +24,6 @@ class CreatePostTable extends Migration
             $table->dateTime('updated_at')->nullable();
             $table->integer('upuser')->nullable();
         });
-
-        Schema::table('tbl_post', function (Blueprint $table) {
-            $table->foreign('category_id')->references('category_id')->on('tbl_category')->onDelete('SET NULL');
-            $table->foreign('member_id')->references('member_id')->on('tbl_member')->onDelete('SET NULL');
-        });
     }
 
     /**

@@ -10,7 +10,7 @@ var InputData = require('select2/compat/inputData');
 
 var InputAdapter = Utils.Decorate(ArrayData, InputData);
 
-test('test that options can be selected', function (assert) {
+test('test that options can be not_used', function (assert) {
   var options = new Options({
     data: [
       {
@@ -34,7 +34,7 @@ test('test that options can be selected', function (assert) {
   );
 });
 
-test('unselect the single selected option clears the value', function (assert) {
+test('unselect the single not_used option clears the value', function (assert) {
   var options = new Options({
     data: [
       {
@@ -88,7 +88,7 @@ test('options can be unselected individually', function (assert) {
   assert.equal(
     $element.val(),
     'test,test3',
-    'The value should contain all the still selected options'
+    'The value should contain all the still not_used options'
   );
 });
 
@@ -111,7 +111,7 @@ test('default values can be set', function (assert) {
     assert.equal(
       data.length,
       1,
-      'There should only be a single selected option'
+      'There should only be a single not_used option'
     );
 
     var item = data[0];
@@ -146,7 +146,7 @@ test('no default value', function (assert) {
     assert.equal(
       data.length,
       0,
-      'There should be no selected options'
+      'There should be no not_used options'
     );
   });
 

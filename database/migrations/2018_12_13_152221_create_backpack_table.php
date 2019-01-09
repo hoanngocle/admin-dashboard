@@ -24,7 +24,6 @@ class CreateBackpackTable extends Migration
         });
 
         Schema::table('tbl_backpack', function (Blueprint $table) {
-            $table->foreign('member_id')->references('member_id')->on('tbl_member')->onDelete('SET NULL');
             $table->foreign('item_id')->references('item_id')->on('tm_item')->onDelete('SET NULL');
         });
     }

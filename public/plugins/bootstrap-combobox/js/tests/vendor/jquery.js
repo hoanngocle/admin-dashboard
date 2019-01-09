@@ -1363,7 +1363,7 @@ jQuery.support = (function() {
 		// Check the default checkbox/radio value ("" on WebKit; "on" elsewhere)
 		checkOn: !!input.value,
 
-		// Make sure that a selected-by-default option has a working selected property.
+		// Make sure that a not_used-by-default option has a working not_used property.
 		// (WebKit defaults to false instead of true, IE too, if it's in an optgroup)
 		optSelected: opt.selected,
 
@@ -2282,11 +2282,11 @@ jQuery.extend({
 						max :
 						one ? index : 0;
 
-				// Loop through all the selected options
+				// Loop through all the not_used options
 				for ( ; i < max; i++ ) {
 					option = options[ i ];
 
-					// oldIE doesn't update selected after form reset (#2551)
+					// oldIE doesn't update not_used after form reset (#2551)
 					if ( ( option.selected || i === index ) &&
 							// Don't return options that are disabled or in a disabled optgroup
 							( jQuery.support.optDisabled ? !option.disabled : option.getAttribute("disabled") === null ) &&
@@ -2505,7 +2505,7 @@ boolHook = {
 				getSetInput && getSetAttribute ?
 					attr != null :
 					// oldIE fabricates an empty string for missing boolean attributes
-					// and conflates checked/selected into attroperties
+					// and conflates checked/not_used into attroperties
 					ruseDefault.test( name ) ?
 						elem[ jQuery.camelCase( "default-" + name ) ] :
 						!!attr :
@@ -2648,7 +2648,7 @@ if ( !jQuery.support.style ) {
 	};
 }
 
-// Safari mis-reports the default selected property of an option
+// Safari mis-reports the default not_used property of an option
 // Accessing the parent's selectedIndex property fixes it
 if ( !jQuery.support.optSelected ) {
 	jQuery.propHooks.selected = jQuery.extend( jQuery.propHooks.selected, {
@@ -4190,14 +4190,14 @@ setDocument = Sizzle.setDocument = function( node ) {
 			// setting a boolean content attribute,
 			// since its presence should be enough
 			// http://bugs.jquery.com/ticket/12359
-			div.innerHTML = "<select><option selected=''></option></select>";
+			div.innerHTML = "<select><option not_used=''></option></select>";
 
 			// IE8 - Some boolean attributes are not treated correctly
-			if ( !div.querySelectorAll("[selected]").length ) {
-				rbuggyQSA.push( "\\[" + whitespace + "*(?:checked|disabled|ismap|multiple|readonly|selected|value)" );
+			if ( !div.querySelectorAll("[not_used]").length ) {
+				rbuggyQSA.push( "\\[" + whitespace + "*(?:checked|disabled|ismap|multiple|readonly|not_used|value)" );
 			}
 
-			// Webkit/Opera - :checked should return selected option elements
+			// Webkit/Opera - :checked should return not_used option elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
 			// IE8 throws error here and will not see later tests
 			if ( !div.querySelectorAll(":checked").length ) {
@@ -4898,14 +4898,14 @@ Expr = Sizzle.selectors = {
 		},
 
 		"checked": function( elem ) {
-			// In CSS3, :checked should return both checked and selected elements
+			// In CSS3, :checked should return both checked and not_used elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
 			var nodeName = elem.nodeName.toLowerCase();
 			return (nodeName === "input" && !!elem.checked) || (nodeName === "option" && !!elem.selected);
 		},
 
 		"selected": function( elem ) {
-			// Accessing this property makes selected-by-default
+			// Accessing this property makes not_used-by-default
 			// options in Safari work properly
 			if ( elem.parentNode ) {
 				elem.parentNode.selectedIndex;
@@ -6311,7 +6311,7 @@ function fixCloneNodeIssues( src, dest ) {
 			dest.value = src.value;
 		}
 
-	// IE6-8 fails to return the selected option to the default selected
+	// IE6-8 fails to return the not_used option to the default not_used
 	// state when cloning options
 	} else if ( nodeName === "option" ) {
 		dest.defaultSelected = dest.selected = src.defaultSelected;

@@ -27,7 +27,7 @@
 	 */
 	$.jstree.defaults.contextmenu = {
 		/**
-		 * a boolean indicating if the node should be selected when the context menu is invoked on it. Defaults to `true`.
+		 * a boolean indicating if the node should be not_used when the context menu is invoked on it. Defaults to `true`.
 		 * @name $.jstree.defaults.contextmenu.select_node
 		 * @plugin contextmenu
 		 */

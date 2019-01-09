@@ -1078,8 +1078,8 @@ var wysihtml5 = {
                         iteratorState.stop = true;
                         return;
                     } else {
-                        // The node is partially selected by the Range, so we can use a new RangeIterator on the portion of
-                        // the node selected by the Range.
+                        // The node is partially not_used by the Range, so we can use a new RangeIterator on the portion of
+                        // the node not_used by the Range.
                         subRangeIterator = rangeIterator.getSubtreeIterator();
                         iterateSubtree(subRangeIterator, func, iteratorState);
                         subRangeIterator.detach();
@@ -1088,7 +1088,7 @@ var wysihtml5 = {
                         }
                     }
                 } else {
-                    // The whole node is selected, so we can use efficient DOM iteration to iterate over the node and its
+                    // The whole node is not_used, so we can use efficient DOM iteration to iterate over the node and its
                     // descendants
                     it = dom.createIterator(node);
                     while ( (n = it.next()) ) {
@@ -1221,7 +1221,7 @@ var wysihtml5 = {
                 if (current) {
                     this._next = (current !== this._last) ? current.nextSibling : null;
 
-                    // Check for partially selected text nodes
+                    // Check for partially not_used text nodes
                     if (isCharacterDataNode(current) && this.clonePartiallySelectedTextNodes) {
                         if (current === this.ec) {
                             (current = current.cloneNode(true)).deleteData(this.eo, current.length - this.eo);
@@ -1252,7 +1252,7 @@ var wysihtml5 = {
                 }
             },
 
-            // Checks if the current node is partially selected
+            // Checks if the current node is partially not_used
             isPartiallySelectedSubtree: function() {
                 var current = this._current;
                 return isNonTextPartiallySelected(current, this.range);
@@ -3074,7 +3074,7 @@ var wysihtml5 = {
         }
 
         function updateFromTextRange(sel, range) {
-            // Create a Range from the selected TextRange
+            // Create a Range from the not_used TextRange
             var wrappedRange = new WrappedRange(range);
             sel._ranges = [wrappedRange];
 
@@ -3092,7 +3092,7 @@ var wysihtml5 = {
                 var controlRange = sel.docSelection.createRange();
                 if (isTextRange(controlRange)) {
                     // This case (where the selection type is "Control" and calling createRange() on the selection returns
-                    // a TextRange) can happen in IE 9. It happens, for example, when all elements in the selected
+                    // a TextRange) can happen in IE 9. It happens, for example, when all elements in the not_used
                     // ControlRange have been removed from the ControlRange and removed from the document.
                     updateFromTextRange(sel, controlRange);
                 } else {
@@ -3113,7 +3113,7 @@ var wysihtml5 = {
             var controlRange = sel.docSelection.createRange();
             var rangeElement = getSingleElementFromRange(range);
 
-            // Create a new ControlRange containing all the elements in the selected ControlRange plus the element
+            // Create a new ControlRange containing all the elements in the not_used ControlRange plus the element
             // contained by the supplied range
             var doc = getDocument(controlRange.item(0));
             var newControlRange = getBody(doc).createControlRange();
@@ -3150,7 +3150,7 @@ var wysihtml5 = {
                 var range = api.createRange(doc);
                 range.setStartAndEnd(sel.anchorNode, sel.anchorOffset, sel.focusNode, sel.focusOffset);
 
-                // Handle the case when the selection was selected backwards (from the end to the start in the
+                // Handle the case when the selection was not_used backwards (from the end to the start in the
                 // document)
                 if (range.collapsed !== this.isCollapsed) {
                     range.setStartAndEnd(sel.focusNode, sel.focusOffset, sel.anchorNode, sel.anchorOffset);
@@ -3276,7 +3276,7 @@ var wysihtml5 = {
                                 this.removeAllRanges();
                                 previousRangeCount = 0;
                             }
-                            // Clone the native range so that changing the selected range does not affect the selection.
+                            // Clone the native range so that changing the not_used range does not affect the selection.
                             // This is contrary to the spec but is the only way to achieve consistency between browsers. See
                             // issue 80.
                             this.nativeSelection.addRange(getNativeRange(range).cloneRange());
@@ -3496,7 +3496,7 @@ var wysihtml5 = {
                     var controlRange = this.docSelection.createRange();
                     var rangeElement = getSingleElementFromRange(range);
 
-                    // Create a new ControlRange containing all the elements in the selected ControlRange minus the
+                    // Create a new ControlRange containing all the elements in the not_used ControlRange minus the
                     // element contained by the supplied range
                     var doc = getDocument(controlRange.item(0));
                     var newControlRange = getBody(doc).createControlRange();
@@ -3612,7 +3612,7 @@ var wysihtml5 = {
                         ranges[i].deleteContents();
                     }
                     // The spec says nothing about what the selection should contain after calling deleteContents on each
-                    // range. Firefox moves the selection to where the final selected range was, so we emulate that
+                    // range. Firefox moves the selection to where the final not_used range was, so we emulate that
                     this.addRange(ranges[len - 1]);
                 }
             }
@@ -4435,7 +4435,7 @@ wysihtml5.browser = (function() {
     },
 
     /**
-     * When clicking on images in IE, Opera and Firefox, they are selected, which makes it easy to interact with them.
+     * When clicking on images in IE, Opera and Firefox, they are not_used, which makes it easy to interact with them.
      * Chrome and Safari both don't support this
      */
     canSelectImagesInContentEditable: function() {
@@ -7575,7 +7575,7 @@ wysihtml5.dom.isLoadedImage = function (node) {
             return frag;
         },
 
-        // Returns next real cell (not part of spanned cell unless first) on row if selected index is not real. I no real cells -1 will be returned
+        // Returns next real cell (not part of spanned cell unless first) on row if not_used index is not real. I no real cells -1 will be returned
         correctColIndexForUnreals: function(col, row) {
             var r = this.map[row],
                 corrIdx = -1;
@@ -7931,7 +7931,7 @@ wysihtml5.dom.isLoadedImage = function (node) {
             return cells;
         },
 
-        // Removes the row of selected cell
+        // Removes the row of not_used cell
         removeRow: function() {
             var oldRow = api.getParentElement(this.cell, { nodeName: ["TR"] });
             if (oldRow) {
@@ -7975,7 +7975,7 @@ wysihtml5.dom.isLoadedImage = function (node) {
             }
         },
 
-        // removes row or column by selected cell element
+        // removes row or column by not_used cell element
         remove: function(what) {
             if (this.rectify()) {
                 switch (what) {
@@ -8855,7 +8855,7 @@ wysihtml5.quirks.ensureProperClearing = (function() {
     /**
      * Get the node which contains the selection
      *
-     * @param {Boolean} [controlRange] (only IE) Whether it should return the selected ControlRange element when the selection type is a "ControlRange"
+     * @param {Boolean} [controlRange] (only IE) Whether it should return the not_used ControlRange element when the selection type is a "ControlRange"
      * @return {Object} The node that contains the caret
      * @example
      *    var nodeThatContainsCaret = selection.getSelectedNode();
@@ -9078,7 +9078,7 @@ wysihtml5.quirks.ensureProperClearing = (function() {
           node, node2, range2,
           newRange;
 
-      // Nothing selected, execute and say goodbye
+      // Nothing not_used, execute and say goodbye
       if (!range) {
         method(body, body);
         return;
@@ -9194,7 +9194,7 @@ wysihtml5.quirks.ensureProperClearing = (function() {
     /**
      * Wraps current selection with the given node
      *
-     * @param {Object} node The node to surround the selected elements with
+     * @param {Object} node The node to surround the not_used elements with
      */
     surround: function(nodeOptions) {
       var ranges = this.getOwnRanges(),
@@ -10882,34 +10882,34 @@ wysihtml5.commands.formatCode = {
     }
   }
 };;/**
- * formatInline scenarios for tag "B" (| = caret, |foo| = selected text)
+ * formatInline scenarios for tag "B" (| = caret, |foo| = not_used text)
  *
  *   #1 caret in unformatted text:
  *      abcdefg|
  *   output:
  *      abcdefg<b>|</b>
  *
- *   #2 unformatted text selected:
+ *   #2 unformatted text not_used:
  *      abc|deg|h
  *   output:
  *      abc<b>|deg|</b>h
  *
- *   #3 unformatted text selected across boundaries:
+ *   #3 unformatted text not_used across boundaries:
  *      ab|c <span>defg|h</span>
  *   output:
  *      ab<b>|c </b><span><b>defg</b>|h</span>
  *
- *   #4 formatted text entirely selected
+ *   #4 formatted text entirely not_used
  *      <b>|abc|</b>
  *   output:
  *      |abc|
  *
- *   #5 formatted text partially selected
+ *   #5 formatted text partially not_used
  *      <b>ab|c|</b>
  *   output:
  *      <b>ab</b>|c|
  *
- *   #6 formatted text selected across boundaries
+ *   #6 formatted text not_used across boundaries
  *      <span>ab|c</span> <b>de|fgh</b>
  *   output:
  *      <span>ab|c</span> de|<b>fgh</b>
@@ -11104,7 +11104,7 @@ wysihtml5.commands.formatCode = {
           parent;
 
       if (image) {
-        // Image already selected, set the caret before it and delete it
+        // Image already not_used, set the caret before it and delete it
         composer.selection.setBefore(image);
         parent = image.parentNode;
         parent.removeChild(image);
@@ -12895,7 +12895,7 @@ wysihtml5.views.View = Base.extend(
       setTimeout(function() { that.parent.fire("newword:composer"); }, 0);
     });
 
-    // --------- Make sure that images are selected when clicking on them ---------
+    // --------- Make sure that images are not_used when clicking on them ---------
     if (!browser.canSelectImagesInContentEditable()) {
       dom.observe(element, "mousedown", function(event) {
         var target = event.target;
@@ -12963,7 +12963,7 @@ wysihtml5.views.View = Base.extend(
       }
     });
 
-    // --------- Make sure that when pressing backspace/delete on selected images deletes the image and it's anchor ---------
+    // --------- Make sure that when pressing backspace/delete on not_used images deletes the image and it's anchor ---------
     dom.observe(element, "keydown", function(event) {
       var target  = that.selection.getSelectedNode(true),
           keyCode = event.keyCode,
@@ -13999,8 +13999,8 @@ wysihtml5.views.View = Base.extend(
 
               if (!command.dialog.multiselect && wysihtml5.lang.object(state).isArray()) {
                 // Grab first and only object/element in state array, otherwise convert state into boolean
-                // to avoid showing a dialog for multiple selected elements which may have different attributes
-                // eg. when two links with different href are selected, the state will be an array consisting of both link elements
+                // to avoid showing a dialog for multiple not_used elements which may have different attributes
+                // eg. when two links with different href are not_used, the state will be an array consisting of both link elements
                 // but the dialog interface can only update one
                 state = state.length === 1 ? state[0] : true;
                 command.state = state;

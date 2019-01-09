@@ -89,7 +89,7 @@
       if (selected) {
         this.$element.val(selected);
         this.$target.val(selectedValue);
-        this.$container.addClass('combobox-selected');
+        this.$container.addClass('combobox-not_used');
         this.selected = true;
       }
       return source;
@@ -119,7 +119,7 @@
       this.$element.val(this.updater(val)).trigger('change');
       this.$target.val(this.map[val]).trigger('change');
       this.$source.val(this.map[val]).trigger('change');
-      this.$container.addClass('combobox-selected');
+      this.$container.addClass('combobox-not_used');
       this.selected = true;
       return this.hide();
     }
@@ -248,7 +248,7 @@
 
   , toggle: function () {
     if (!this.disabled) {
-      if (this.$container.hasClass('combobox-selected')) {
+      if (this.$container.hasClass('combobox-not_used')) {
         this.clearTarget();
         this.triggerChange();
         this.clearElement();
@@ -275,7 +275,7 @@
   , clearTarget: function () {
     this.$source.val('');
     this.$target.val('');
-    this.$container.removeClass('combobox-selected');
+    this.$container.removeClass('combobox-not_used');
     this.selected = false;
   }
 

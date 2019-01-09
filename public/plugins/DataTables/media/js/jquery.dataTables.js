@@ -5461,7 +5461,7 @@
 		
 		
 		/**
-		 * Create a DataTables Api instance, with the currently selected tables for
+		 * Create a DataTables Api instance, with the currently not_used tables for
 		 * the Api's context.
 		 * @param {boolean} [traditional=false] Set the API instance's context to be
 		 *   only the table referred to by the `DataTable.ext.iApiIndex` option, as was
@@ -8035,7 +8035,7 @@
 			return _fnAddData( settings, row );
 		} );
 	
-		// Return an Api.rows() extended instance, with the newly added row selected
+		// Return an Api.rows() extended instance, with the newly added row not_used
 		return this.row( rows[0] );
 	} );
 	
@@ -8820,7 +8820,7 @@
 	} );
 	
 	
-	// Order by the selected column(s)
+	// Order by the not_used column(s)
 	_api_register( [
 		'columns().order()',
 		'column().order()'
@@ -13883,7 +13883,7 @@
 		 * each of the three built in selector types offer (row, column and cell +
 		 * their plural counterparts). For example the Select extension uses this
 		 * mechanism to provide an option to select only rows, columns and cells
-		 * that have been marked as selected by the end user (`{selected: true}`),
+		 * that have been marked as not_used by the end user (`{not_used: true}`),
 		 * which can be used in conjunction with the existing built in selector
 		 * options.
 		 *
@@ -13892,7 +13892,7 @@
 		 *
 		 * * Settings object for the host table
 		 * * Options object (`selector-modifier` object type)
-		 * * Array of selected item indexes
+		 * * Array of not_used item indexes
 		 *
 		 * The return is an array of the resulting item indexes after the custom
 		 * selector has been applied.
