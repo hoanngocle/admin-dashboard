@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Sentinel;
-use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Authenticate
 {
@@ -21,6 +20,6 @@ class Authenticate
             return $next($request);
         }
 
-        return redirect()->route('auth.login.form')->withErrors('Bạn phải đăng nhập');
+        return redirect()->route('auth.login.form')->withErrors('You must be logged in as an administrator.');
     }
 }

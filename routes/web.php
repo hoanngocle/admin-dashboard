@@ -12,56 +12,71 @@
 */
 
 /***************************BACK-END*****************************/
-// Login page
+// Login, Register, Password Recover
+Route::namespace('Admin\Auth')->domain('admin.' . env('APP_DOMAIN'))->group(function () {
+    // Login routes
+    Route::get('login', [
+        'as' => 'auth.login.form',
+        'uses' => 'LoginController@index'
+    ]);
+
+    Route::post('login', [
+        'as' => 'auth.login.process',
+        'uses' => 'LoginController@processLogin'
+    ]);
+
+    // Logout route
+    Route::post('logout', 'LoginController@logout');
+});
 /**
- * @todo: add login, register view, processLogin, processRegistration Ajax
  * use middle ware login or not, must be login to use BO
  */
-Route::prefix('admin')->namespace('Admin')->group(function () {
-    // Dashboard BO
-    Route::resource('/', 'DashboardController');
+Route::middleware(['auth', 'check.admin'])->domain('admin.' . env('APP_DOMAIN'))
+    ->namespace('Admin')->group(function () {
+        // Dashboard BO
+        Route::resource('/', 'DashboardController');
 
-    // Login, Register, Password Recover
-    Route::namespace('Auth')->group(function () {
-        // Login routes
-        Route::group(['middleware' => ['auth','check.admin']], function () {
+        // Member Management
 
-        });
-        Route::get('login', [
-            'as' => 'auth.login.form',
-            'uses' => 'LoginController@index'
-        ]);
-        Route::post('login', [
-            'as' => 'auth.login.process',
-            'uses' => 'LoginController@processLogin'
-        ]);
+        // Content management
 
-        // Register routes
-        Route::get('register', 'RegisterController@index');
-        Route::post('register', 'RegisterController@processRegister');
+        // Quiz management
 
-        // Password reset token routes
-        Route::get('forgot-password', 'PasswordController@index');
-        Route::post('forgot-password', 'PasswordController@sendToken');
-        Route::get('reset-password', 'ResetPasswordController@index');
-        Route::post('reset-password', 'ResetPasswordController@processResetPassword');
+        // Book management
 
-        // Logout route
-        Route::post('logout', 'LoginController@logout');
     });
 
 
-});
 
-// Member Management
-
-// Content management
-
-// Quiz management
-
-// Book management
 
 /***************************FRONT-END*****************************/
+
+//// Login, Register, Password Recover
+//Route::namespace('Sagittarius\Auth')->group(function () {
+//    // Login routes
+//    Route::get('login', [
+//        'as' => 'auth.login.form',
+//        'uses' => 'LoginController@index'
+//    ]);
+//
+//    Route::post('login', [
+//        'as' => 'auth.login.process',
+//        'uses' => 'LoginController@processLogin'
+//    ]);
+//
+//    // Register routes
+//    Route::get('register', 'RegisterController@index');
+//    Route::post('register', 'RegisterController@processRegister');
+//
+//    // Password reset token routes
+//    Route::get('forgot-password', 'PasswordController@index');
+//    Route::post('forgot-password', 'PasswordController@sendToken');
+//    Route::get('reset-password', 'ResetPasswordController@index');
+//    Route::post('reset-password', 'ResetPasswordController@processResetPassword');
+//
+//    // Logout route
+//    Route::post('logout', 'LoginController@logout');
+//});
 
 // Count-down page
 
