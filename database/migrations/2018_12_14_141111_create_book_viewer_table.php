@@ -24,10 +24,6 @@ class CreateBookViewerTable extends Migration
             $table->softDeletes();
             $table->integer('upuser')->nullable();
         });
-
-        Schema::table('tbl_book_viewer', function (Blueprint $table) {
-            $table->foreign('book_id')->references('book_id')->on('tbl_book')->onDelete('SET NULL');
-        });
     }
 
     /**

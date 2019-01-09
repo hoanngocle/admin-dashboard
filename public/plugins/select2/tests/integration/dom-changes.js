@@ -68,7 +68,7 @@ test('adding a new unselected option changes nothing', function (assert) {
   syncDone();
 });
 
-test('adding a new selected option changes the value', function (assert) {
+test('adding a new not_used option changes the value', function (assert) {
   // handle IE 8 not being supported
   var expected = 4;
   if (!window.MutationObserver && !window.addEventListener) {
@@ -122,7 +122,7 @@ test('adding a new selected option changes the value', function (assert) {
     'One'
   );
 
-  var $option = $('<option selected>Three</option>');
+  var $option = $('<option not_used>Three</option>');
 
   $select.append($option);
 
@@ -198,7 +198,7 @@ test('removing an unselected option changes nothing', function (assert) {
   syncDone();
 });
 
-test('removing a selected option changes the value', function (assert) {
+test('removing a not_used option changes the value', function (assert) {
   // handle IE 8 not being supported
   var expected = 3;
   if (!window.MutationObserver && !window.addEventListener) {

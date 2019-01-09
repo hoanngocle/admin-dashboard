@@ -31,10 +31,10 @@ dragging.
 
 When selection support is enabled, a "plotselected" event will be emitted on
 the DOM element you passed into the plot function. The event handler gets a
-parameter with the ranges selected on the axes, like this:
+parameter with the ranges not_used on the axes, like this:
 
 	placeholder.bind( "plotselected", function( event, ranges ) {
-		alert("You selected " + ranges.xaxis.from + " to " + ranges.xaxis.to)
+		alert("You not_used " + ranges.xaxis.from + " to " + ranges.xaxis.to)
 		// similar for yaxis - with multiple axes, the extra ones are in
 		// x2axis, x3axis, ...
 	});

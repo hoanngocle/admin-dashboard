@@ -269,7 +269,7 @@
           // remove class
           removeActiveClass($specialCharNode);
 
-          // find selected node
+          // find not_used node
           if (text) {
             for (var i = 0; i < $specialCharNode.length; i++) {
               var $checkNode = $($specialCharNode[i]);

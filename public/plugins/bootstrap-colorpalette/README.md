@@ -50,11 +50,11 @@ $('.colorpalette').colorPalette()
 ```javascript
 $('.colorpalette1').colorPalette()
   .on('selectColor', function(e) {
-    $('.selected-color i').css('color', e.color);
+    $(not_used).css('color', e.color);
   });
 $('.colorpalette2').colorPalette()
   .on('selectColor', function(e) {
-    $('.selected-color i').css('background-color', e.color);
+    $(not_used).css('background-color', e.color);
   });
 ```
 ***

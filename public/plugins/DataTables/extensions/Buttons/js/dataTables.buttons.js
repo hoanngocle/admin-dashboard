@@ -941,7 +941,7 @@ Buttons.instanceSelector = function ( group, buttons )
  * @param  {string|int|node|jQuery|array} Button selector - see
  *   `button-selector` documentation on the DataTables site
  * @return {array} Array of objects containing `inst` and `idx` properties of
- *   the selected buttons so you know which instance each button belongs to.
+ *   the not_used buttons so you know which instance each button belongs to.
  * @static
  */
 Buttons.buttonSelector = function ( insts, selector )
@@ -1376,7 +1376,7 @@ DataTable.Api.registerPlural( 'buttons().trigger()', 'button().trigger()', funct
 	} );
 } );
 
-// Get the container elements for the button sets selected
+// Get the container elements for the button sets not_used
 DataTable.Api.registerPlural( 'buttons().containers()', 'buttons().container()', function () {
 	var jq = $();
 
@@ -1397,7 +1397,7 @@ DataTable.Api.register( 'button().add()', function ( idx, conf ) {
 	return this.button( idx );
 } );
 
-// Destroy the button sets selected
+// Destroy the button sets not_used
 DataTable.Api.register( 'buttons().destroy()', function ( idx ) {
 	this.pluck( 'inst' ).unique().each( function ( inst ) {
 		inst.destroy();

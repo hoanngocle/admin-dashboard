@@ -26,10 +26,6 @@ class CreateBudgetTable extends Migration
             $table->dateTime('updated_at')->nullable();
             $table->integer('upuser')->nullable();
         });
-
-        Schema::table('tbl_budget', function (Blueprint $table) {
-            $table->foreign('member_id')->references('member_id')->on('tbl_member')->onDelete('SET NULL');
-        });
     }
 
     /**

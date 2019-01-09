@@ -24,10 +24,6 @@ class CreateWordTable extends Migration
             $table->dateTime('updated_at')->nullable();
             $table->integer('upuser')->nullable();
         });
-
-        Schema::table('tbl_word', function (Blueprint $table) {
-            $table->foreign('lesson_id')->references('lesson_id')->on('tbl_lesson')->onDelete('SET NULL');
-        });
     }
 
     /**

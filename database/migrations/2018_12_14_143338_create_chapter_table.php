@@ -26,11 +26,6 @@ class CreateChapterTable extends Migration
             $table->softDeletes();
             $table->integer('upuser')->nullable();
         });
-
-        Schema::table('tbl_chapter', function (Blueprint $table) {
-            $table->foreign('book_id')->references('book_id')->on('tbl_book')->onDelete('SET NULL');
-            $table->foreign('author_id')->references('author_id')->on('tbl_book')->onDelete('SET NULL');
-        });
     }
 
     /**

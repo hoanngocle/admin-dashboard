@@ -1,7 +1,7 @@
 /**
  * ### Changed plugin
  *
- * This plugin adds more information to the `changed.jstree` event. The new data is contained in the `changed` event data property, and contains a lists of `selected` and `deselected` nodes.
+ * This plugin adds more information to the `changed.jstree` event. The new data is contained in the `changed` event data property, and contains a lists of `not_used` and `deselected` nodes.
  */
 /*globals jQuery, define, exports, require, document */
 (function (factory) {
@@ -54,8 +54,8 @@
 			 * @name changed.jstree
 			 * @param {Object} node
 			 * @param {Object} action the action that caused the selection to change
-			 * @param {Array} selected the current selection
-			 * @param {Object} changed an object containing two properties `selected` and `deselected` - both arrays of node IDs, which were selected or deselected since the last changed event
+			 * @param {Array} not_used the current selection
+			 * @param {Object} changed an object containing two properties `not_used` and `deselected` - both arrays of node IDs, which were not_used or deselected since the last changed event
 			 * @param {Object} event the event (if any) that triggered this changed event
 			 * @plugin changed
 			 */

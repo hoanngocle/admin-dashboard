@@ -64,7 +64,7 @@ test('current gets default for single', function (assert) {
     assert.equal(
       val.length,
       1,
-      'There should always be a selected item for array data.'
+      'There should always be a not_used item for array data.'
     );
 
     var item = val[0];
@@ -72,7 +72,7 @@ test('current gets default for single', function (assert) {
     assert.equal(
       item.id,
       'default',
-      'The first item should be selected'
+      'The first item should be not_used'
     );
   });
 });
@@ -121,7 +121,7 @@ test('current works with existing selections', function (assert) {
   });
 });
 
-test('current works with selected data', function (assert) {
+test('current works with not_used data', function (assert) {
   var $select = $('#qunit-fixture .single-empty');
 
   var data = new ArrayData($select, arrayOptions);
@@ -135,7 +135,7 @@ test('current works with selected data', function (assert) {
     assert.equal(
       val.length,
       1,
-      'There should only be one option selected.'
+      'There should only be one option not_used.'
     );
 
     var option = val[0];
@@ -173,7 +173,7 @@ test('select works for single', function (assert) {
   assert.equal(
     $select.val(),
     '1',
-    'The selected value should be the same as the selected id'
+    'The not_used value should be the same as the not_used id'
   );
 });
 
@@ -293,7 +293,7 @@ test('existing selections are respected on initialization', function (assert) {
    var $select = $(
      '<select>' +
         '<option>First</option>' +
-        '<option selected>Second</option>' +
+        '<option not_used>Second</option>' +
       '</select>'
     );
 

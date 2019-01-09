@@ -18,11 +18,6 @@ class CreateBookCategoryTable extends Migration
             $table->unsignedInteger('category_id')->nullable();
             $table->unsignedInteger('book_id')->nullable();
         });
-
-        Schema::table('tbl_book_category', function (Blueprint $table) {
-            $table->foreign('category_id')->references('category_id')->on('tbl_category')->onDelete('SET NULL');
-            $table->foreign('book_id')->references('book_id')->on('tbl_book')->onDelete('SET NULL');
-        });
     }
 
     /**

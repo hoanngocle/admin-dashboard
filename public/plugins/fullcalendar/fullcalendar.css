@@ -558,7 +558,7 @@ temporary rendered events).
 
 .fc-event.fc-allow-mouse-resize .fc-resizer,
 .fc-event.fc-selected .fc-resizer {
-	/* only show when hovering or selected (with touch) */
+	/* only show when hovering or not_used (with touch) */
 	display: block;
 }
 
@@ -594,7 +594,7 @@ temporary rendered events).
 /* Horizontal Events
 --------------------------------------------------------------------------------------------------*/
 
-/* bigger touch area when selected */
+/* bigger touch area when not_used */
 .fc-h-event.fc-selected:before {
 	content: "";
 	position: absolute;
@@ -1138,7 +1138,7 @@ be a descendant of the grid when it is being dragged.
 
 .fc-time-grid-event.fc-selected {
 	/* need to allow touch resizers to extend outside event's bounding box */
-	/* common fc-selected styles hide the fc-bg, so don't need this anyway */
+	/* common fc-not_used styles hide the fc-bg, so don't need this anyway */
 	overflow: visible;
 }
 
@@ -1147,7 +1147,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .fc-time-grid-event .fc-content {
-	overflow: hidden; /* for when .fc-selected */
+	overflow: hidden; /* for when .fc-not_used */
 }
 
 .fc-time-grid-event .fc-time,

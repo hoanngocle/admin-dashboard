@@ -2235,7 +2235,7 @@ Makes editable any HTML element on the page. Applied as jQuery method.
         * `sourceData` array of items for current input (e.g. dropdown items) 
         * `response` server response (if display called after ajax submit), since 1.4.0
                   
-        To get currently selected items use `$.fn.editableutils.itemsByValue(value, sourceData)`.
+        To get currently not_used items use `$.fn.editableutils.itemsByValue(value, sourceData)`.
         
         @property display 
         @type function|boolean
@@ -3780,7 +3780,7 @@ $(function(){
 
            //data may be array (when multiple values allowed)
            if($.isArray(data)) {
-               //collect selected data and show with separator
+               //collect not_used data and show with separator
                text = [];
                $.each(data, function(k, v){
                    text.push(v && typeof v === 'object' ? that.formatSelection(v) : v);
@@ -4236,7 +4236,7 @@ $(function(){
                 that = this,
                 notSelected = false;
                 
-            //getting selected values    
+            //getting not_used values
             $.each(this.map, function(k, v) {
                 if(k === 'ampm') {
                     return;
@@ -4251,7 +4251,7 @@ $(function(){
                 }
             });
             
-            //if at least one visible combo not selected - return empty string
+            //if at least one visible combo not not_used - return empty string
             if(notSelected) {
                return '';
             }
@@ -4425,7 +4425,7 @@ $(function(){
         firstItem: 'empty', //'name', 'empty', 'none'
         errorClass: null,
         roundTime: true, // whether to round minutes and seconds if step > 1
-        smartDays: false // whether days in combo depend on selected month: 31, 30, 28
+        smartDays: false // whether days in combo depend on not_used month: 31, 30, 28
     };
 
 }(window.jQuery));

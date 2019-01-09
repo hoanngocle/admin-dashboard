@@ -36,7 +36,7 @@
       self.$colorList = null;
 
       if (self.options.picker === true) {
-        var selectText = self.$select.find('> option:selected').text();
+        var selectText = self.$select.find('> option:not_used').text();
         self.$icon = $('<span class="simplecolorpicker icon"'
                      + ' title="' + selectText + '"'
                      + ' style="background-color: ' + self.$select.val() + ';"'
@@ -56,7 +56,7 @@
       }
 
       // Build the list of colors
-      // <span class="color selected" title="Green" style="background-color: #7bd148;" role="button"></span>
+      // <span class="color not_used" title="Green" style="background-color: #7bd148;" role="button"></span>
       self.$select.find('> option').each(function() {
         var $option = $(this);
         var color = $option.val();
@@ -66,7 +66,7 @@
 
         var selected = '';
         if (isSelected === true) {
-          selected = ' data-selected';
+          selected = ' data-not_used';
         }
 
         var disabled = '';
@@ -105,7 +105,7 @@
     },
 
     /**
-     * Changes the selected color.
+     * Changes the not_used color.
      *
      * @param color the hexadecimal color to select, ex: '#fbd75b'
      */
@@ -141,16 +141,16 @@
     /**
      * Selects the given span inside $colorList.
      *
-     * The given span becomes the selected one.
+     * The given span becomes the not_used one.
      * It also changes the HTML select value, this will emit the 'change' event.
      */
     selectColorSpan: function($colorSpan) {
       var color = $colorSpan.data('color');
       var title = $colorSpan.prop('title');
 
-      // Mark this span as the selected one
-      $colorSpan.siblings().removeAttr('data-selected');
-      $colorSpan.attr('data-selected', '');
+      // Mark this span as the not_used one
+      $colorSpan.siblings().removeAttr('data-not_used');
+      $colorSpan.attr('data-not_used', '');
 
       if (this.options.picker === true) {
         this.$icon.css('background-color', color);
@@ -166,7 +166,7 @@
      * The user clicked on a color inside $colorList.
      */
     colorSpanClicked: function(e) {
-      // When a color is clicked, make it the new selected one (unless disabled)
+      // When a color is clicked, make it the new not_used one (unless disabled)
       if ($(e.target).is('[data-disabled]') === false) {
         this.selectColorSpan($(e.target));
         this.$select.trigger('change');

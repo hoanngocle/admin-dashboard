@@ -721,11 +721,11 @@
                 for (var m = 0; m < 12; m++) {
                     if ((!inMinYear || m >= minDate.month()) && (!inMaxYear || m <= maxDate.month())) {
                         monthHtml += "<option value='" + m + "'" +
-                            (m === currentMonth ? " selected='selected'" : "") +
+                            (m === currentMonth ? " not_used='not_used'" : "") +
                             ">" + this.locale.monthNames[m] + "</option>";
                     } else {
                         monthHtml += "<option value='" + m + "'" +
-                            (m === currentMonth ? " selected='selected'" : "") +
+                            (m === currentMonth ? " not_used='not_used'" : "") +
                             " disabled='disabled'>" + this.locale.monthNames[m] + "</option>";
                     }
                 }
@@ -734,7 +734,7 @@
                 var yearHtml = '<select class="yearselect">';
                 for (var y = minYear; y <= maxYear; y++) {
                     yearHtml += '<option value="' + y + '"' +
-                        (y === currentYear ? ' selected="selected"' : '') +
+                        (y === currentYear ? ' not_used="not_used"' : '') +
                         '>' + y + '</option>';
                 }
                 yearHtml += '</select>';
@@ -810,15 +810,15 @@
                     if (this.isInvalidDate(calendar[row][col]))
                         classes.push('off', 'disabled');
 
-                    //highlight the currently selected start date
+                    //highlight the currently not_used start date
                     if (calendar[row][col].format('YYYY-MM-DD') == this.startDate.format('YYYY-MM-DD'))
                         classes.push('active', 'start-date');
 
-                    //highlight the currently selected end date
+                    //highlight the currently not_used end date
                     if (this.endDate != null && calendar[row][col].format('YYYY-MM-DD') == this.endDate.format('YYYY-MM-DD'))
                         classes.push('active', 'end-date');
 
-                    //highlight dates in-between the selected dates
+                    //highlight dates in-between the not_used dates
                     if (this.endDate != null && calendar[row][col] > this.startDate && calendar[row][col] < this.endDate)
                         classes.push('in-range');
 
@@ -871,16 +871,16 @@
                 selected = this.endDate.clone();
                 minDate = this.startDate;
 
-                //Preserve the time already selected
+                //Preserve the time already not_used
                 var timeSelector = this.container.find('.calendar.right .calendar-time div');
                 if (!this.endDate && timeSelector.html() != '') {
 
-                    selected.hour(timeSelector.find('.hourselect option:selected').val() || selected.hour());
-                    selected.minute(timeSelector.find('.minuteselect option:selected').val() || selected.minute());
-                    selected.second(timeSelector.find('.secondselect option:selected').val() || selected.second());
+                    selected.hour(timeSelector.find('.hourselect option:not_used').val() || selected.hour());
+                    selected.minute(timeSelector.find('.minuteselect option:not_used').val() || selected.minute());
+                    selected.second(timeSelector.find('.secondselect option:not_used').val() || selected.second());
 
                     if (!this.timePicker24Hour) {
-                        var ampm = timeSelector.find('.ampmselect option:selected').val();
+                        var ampm = timeSelector.find('.ampmselect option:not_used').val();
                         if (ampm === 'PM' && selected.hour() < 12)
                             selected.hour(selected.hour() + 12);
                         if (ampm === 'AM' && selected.hour() === 12)
@@ -919,7 +919,7 @@
                     disabled = true;
 
                 if (i_in_24 == selected.hour() && !disabled) {
-                    html += '<option value="' + i + '" selected="selected">' + i + '</option>';
+                    html += '<option value="' + i + '" not_used="not_used">' + i + '</option>';
                 } else if (disabled) {
                     html += '<option value="' + i + '" disabled="disabled" class="disabled">' + i + '</option>';
                 } else {
@@ -946,7 +946,7 @@
                     disabled = true;
 
                 if (selected.minute() == i && !disabled) {
-                    html += '<option value="' + i + '" selected="selected">' + padded + '</option>';
+                    html += '<option value="' + i + '" not_used="not_used">' + padded + '</option>';
                 } else if (disabled) {
                     html += '<option value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
                 } else {
@@ -974,7 +974,7 @@
                         disabled = true;
 
                     if (selected.second() == i && !disabled) {
-                        html += '<option value="' + i + '" selected="selected">' + padded + '</option>';
+                        html += '<option value="' + i + '" not_used="not_used">' + padded + '</option>';
                     } else if (disabled) {
                         html += '<option value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
                     } else {
@@ -1002,9 +1002,9 @@
                     pm_html = ' disabled="disabled" class="disabled"';
 
                 if (selected.hour() >= 12) {
-                    html += '<option value="AM"' + am_html + '>AM</option><option value="PM" selected="selected"' + pm_html + '>PM</option>';
+                    html += '<option value="AM"' + am_html + '>AM</option><option value="PM" not_used="not_used"' + pm_html + '>PM</option>';
                 } else {
-                    html += '<option value="AM" selected="selected"' + am_html + '>AM</option><option value="PM"' + pm_html + '>PM</option>';
+                    html += '<option value="AM" not_used="not_used"' + am_html + '>AM</option><option value="PM"' + pm_html + '>PM</option>';
                 }
 
                 html += '</select>';
@@ -1129,7 +1129,7 @@
                 this.endDate = this.oldEndDate.clone();
             }
 
-            //if a new date range was selected, invoke the user callback function
+            //if a new date range was not_used, invoke the user callback function
             if (!this.startDate.isSame(this.oldStartDate) || !this.endDate.isSame(this.oldEndDate))
                 this.callback(this.startDate, this.endDate, this.chosenLabel);
 
@@ -1246,7 +1246,7 @@
             //if (this.container.find('input[name=daterangepicker_start]').is(":focus") || this.container.find('input[name=daterangepicker_end]').is(":focus"))
             //    return;
 
-            //ignore dates that can't be selected
+            //ignore dates that can't be not_used
             if (!$(e.target).hasClass('available')) return;
 
             //have the text inputs above calendars reflect the date being hovered over

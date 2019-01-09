@@ -9,7 +9,7 @@ class PasswordController extends Controller
 {
     public function index()
     {
-        return 'show page forgot password and recover by mail';
+        return view('admin.pages.auth.forgot-password');
     }
 
     public function changePassword()

@@ -25,11 +25,6 @@ class CreateResultTable extends Migration
             $table->softDeletes();
             $table->integer('upuser')->nullable();
         });
-
-        Schema::table('tbl_result', function (Blueprint $table) {
-            $table->foreign('member_id')->references('member_id')->on('tbl_member')->onDelete('SET NULL');
-            $table->foreign('lesson_id')->references('lesson_id')->on('tbl_lesson')->onDelete('SET NULL');
-        });
     }
 
     /**

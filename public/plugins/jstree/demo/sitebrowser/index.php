@@ -23,7 +23,7 @@ if(isset($_GET['operation'])) {
 				$node = isset($_GET['id']) && $_GET['id'] !== '#' ? $_GET['id'] : 0;
 				$node = explode(':', $node);
 				if(count($node) > 1) {
-					$rslt = array('content' => 'Multiple selected');
+					$rslt = array('content' => 'Multiple not_used');
 				}
 				else {
 					$temp = $fs->get_node((int)$node[0], array('with_path' => true));

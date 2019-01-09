@@ -23,10 +23,6 @@ class CreateLessonTable extends Migration
             $table->softDeletes();
             $table->integer('upuser')->nullable();
         });
-
-        Schema::table('tbl_lesson', function (Blueprint $table) {
-            $table->foreign('course_id')->references('course_id')->on('tbl_course')->onDelete('SET NULL');
-        });
     }
 
     /**

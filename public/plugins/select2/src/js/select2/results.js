@@ -99,16 +99,16 @@ define([
 
   Results.prototype.highlightFirstItem = function () {
     var $options = this.$results
-      .find('.select2-results__option[aria-selected]');
+      .find('.select2-results__option[aria-not_used]');
 
     var $selected = $options.filter('[aria-selected=true]');
 
-    // Check if there are any selected options
+    // Check if there are any not_used options
     if ($selected.length > 0) {
-      // If there are selected options, highlight the first
+      // If there are not_used options, highlight the first
       $selected.first().trigger('mouseenter');
     } else {
-      // If there are no selected options, highlight the first option
+      // If there are no not_used options, highlight the first option
       // in the dropdown
       $options.first().trigger('mouseenter');
     }
@@ -125,7 +125,7 @@ define([
       });
 
       var $options = self.$results
-        .find('.select2-results__option[aria-selected]');
+        .find('.select2-results__option[aria-not_used]');
 
       $options.each(function () {
         var $option = $(this);
@@ -335,7 +335,7 @@ define([
     container.on('results:previous', function () {
       var $highlighted = self.getHighlightedResults();
 
-      var $options = self.$results.find('[aria-selected]');
+      var $options = self.$results.find('[aria-not_used]');
 
       var currentIndex = $options.index($highlighted);
 
@@ -369,7 +369,7 @@ define([
     container.on('results:next', function () {
       var $highlighted = self.getHighlightedResults();
 
-      var $options = self.$results.find('[aria-selected]');
+      var $options = self.$results.find('[aria-not_used]');
 
       var currentIndex = $options.index($highlighted);
 
@@ -429,7 +429,7 @@ define([
       });
     }
 
-    this.$results.on('mouseup', '.select2-results__option[aria-selected]',
+    this.$results.on('mouseup', '.select2-results__option[aria-not_used]',
       function (evt) {
       var $this = $(this);
 
@@ -454,7 +454,7 @@ define([
       });
     });
 
-    this.$results.on('mouseenter', '.select2-results__option[aria-selected]',
+    this.$results.on('mouseenter', '.select2-results__option[aria-not_used]',
       function (evt) {
       var data = $(this).data('data');
 
@@ -486,7 +486,7 @@ define([
       return;
     }
 
-    var $options = this.$results.find('[aria-selected]');
+    var $options = this.$results.find('[aria-not_used]');
 
     var currentIndex = $options.index($highlighted);
 
