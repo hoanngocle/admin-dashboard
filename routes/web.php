@@ -26,7 +26,10 @@ Route::namespace('Admin\Auth')->domain('admin.' . env('APP_DOMAIN'))->group(func
     ]);
 
     // Logout route
-    Route::post('logout', 'LoginController@logout');
+    Route::get('logout', [
+        'as'    => 'auth.logout',
+        'uses'  => 'LoginController@logout'
+    ]);
 });
 /**
  * use middle ware login or not, must be login to use BO

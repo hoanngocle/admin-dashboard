@@ -33,19 +33,23 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth:admin');
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
+    /**
+     * content html page login
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('admin.pages.auth.login');
     }
 
-    public function username()
-    {
-        return 'username';
-    }
-
+    /**
+     * login function
+     * @param Login $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function processLogin(Login $request)
     {
         try {
@@ -64,5 +68,16 @@ class LoginController extends Controller
         return redirect()->back()
             ->withInput()
             ->with('err', $err);
+    }
+
+    /**
+     * Destroy all sessions for the current logged in user
+     *
+     */
+    public function logout()
+    {
+        Sentinel::logout(null, true);
+
+        return redirect()->route('/login')->withErrors('You have been logout.');
     }
 }
