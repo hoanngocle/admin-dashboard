@@ -13,7 +13,7 @@
     <script src="{{ asset('plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap-calendar/js/bootstrap_calendar.min.js') }}"></script>
     <script src="{{ asset('plugins/gritter/js/jquery.gritter.js') }}"></script>
-    <script src="{{ asset('js/dashboard-v2.min.js') }}"></script>
+    <script src="{{ asset('js/admin/dashboard-v2.min.js') }}"></script>
 
     <!-- ================== END BASE JS ================== -->
     <script>

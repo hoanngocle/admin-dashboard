@@ -13,8 +13,10 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'logout_msg' => 'You have been logout.'
+    'login_failed'      => 'These credentials do not match our records.',
+    'login_not_active'  => 'Your account has been not activated yet.',
+    'login_throttle'    => 'Too many login attempts. Please try again in :seconds seconds.',
+
+    'logout_msg'        => 'You have been logout.',
 
 ];

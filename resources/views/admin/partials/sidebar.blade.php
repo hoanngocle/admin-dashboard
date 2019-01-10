@@ -5,14 +5,14 @@
         <!-- begin sidebar user -->
         <ul class="nav">
             <li class="nav-profile">
-                <a href="javascript:;" data-toggle="nav-profile">
+                <a href="#" data-toggle="nav-profile">
                     <div class="cover with-shadow"></div>
                     <div class="image">
-                        <img src="../assets/img/user/user-13.jpg" alt="" />
+                    <img src="{{ asset("img/user/$avatar.jpg") }}" alt="{{$avatar}}" />
                     </div>
                     <div class="info">
                         <b class="caret pull-right"></b>
-                        Sean Ngu
+                        {{ $nickname }}
                         <small>Front end developer</small>
                     </div>
                 </a>

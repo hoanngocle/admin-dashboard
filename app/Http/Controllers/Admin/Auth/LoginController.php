@@ -55,15 +55,17 @@ class LoginController extends Controller
         try {
             $remember = (boolean) $request->get('remember');
             if (Sentinel::authenticate($request->all(), $remember)) {
+                // update to table
+
                 return redirect()->intended($this->redirectTo);
             } else {
-                $err = "Tên đăng nhập hoặc mật khẩu không đúng!";
+                $err = __('auth.login_failed');
             }
         } catch (NotActivatedException $e) {
-            $err = "Tài khoản của bạn chưa được kích hoạt";
+            $err = __('auth.login_not_active');
         } catch (ThrottlingException $e) {
             $delay = $e->getDelay();
-            $err = "Tài khoản của bạn bị block trong vòng {$delay} sec";
+            $err = __('auth.login_throttle', ['second' => $delay]);
         }
         return redirect()->back()
             ->withInput()
@@ -78,6 +80,6 @@ class LoginController extends Controller
     {
         Sentinel::logout(null, true);
 
-        return redirect()->route('auth.login.form')->withErrors(__('logout_msg'));
+        return redirect()->route('auth.login.form')->withErrors(__('auth.logout_msg'));
     }
 }

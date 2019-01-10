@@ -19,8 +19,12 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'logout_msg' => 'You have been logout.'
+
+    'login_failed'      => 'Tên đăng nhập hoặc mật khẩu không đúng.',
+    'login_not_active'  => 'Tài khoản của bạn chưa được kích hoạt.',
+    'login_throttle'    => 'Tài khoản của bạn bị block trong vòng :seconds sec.',
+
+    'logout_msg' => 'Bạn đã đăng xuất.',
+
 
 ];

@@ -49,4 +49,19 @@ class Users extends CartalystUser
 
         return $nickname;
     }
+
+    /**
+     * return username of user
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        $avatar = Sentinel::getUser()->avatar;
+        if ($avatar == '') {
+            $avatar = 'user-default.jpg';
+        }
+
+        return $avatar;
+    }
 }
