@@ -32,7 +32,7 @@ class Users extends CartalystUser
      * @var array
      */
     protected $hidden = [
-        'password', 'remember',
+        'password',
     ];
 
     /**
