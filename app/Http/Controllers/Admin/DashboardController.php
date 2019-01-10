@@ -23,6 +23,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        // test contribute
         $nickName   = $this->userFactory->getUsername();
         $avatar     = $this->userFactory->getAvatar();
 
