@@ -37,7 +37,10 @@ Route::namespace('Admin\Auth')->domain('admin.' . env('APP_DOMAIN'))->group(func
 Route::middleware(['auth', 'check.admin'])->domain('admin.' . env('APP_DOMAIN'))
     ->namespace('Admin')->group(function () {
         // Dashboard BO
-        Route::resource('/', 'DashboardController');
+        Route::get('/', [
+            'as'    => 'admin.dashboard',
+            'uses'  => 'DashboardController@index'
+        ]);
 
         // Member Management
 
