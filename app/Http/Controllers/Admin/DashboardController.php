@@ -25,6 +25,10 @@ class DashboardController extends Controller
     {
         // test contribute
         $nickName   = $this->userFactory->getUsername();
+        $nickName   = $this->userFactory->getUsername();
+        $nickName   = $this->userFactory->getUsername();
+        $nickName   = $this->userFactory->getUsername();
+        $nickName   = $this->userFactory->getUsername();
         $avatar     = $this->userFactory->getAvatar();
 
         return view('admin.pages.dashboard', [
