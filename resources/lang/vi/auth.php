@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: hoanc
+ * Date: 1/10/2019
+ * Time: 1:23 PM
+ */
 
 return [
 
@@ -13,10 +19,12 @@ return [
     |
     */
 
-    'login_failed'      => 'These credentials do not match our records.',
-    'login_not_active'  => 'Your account has been not activated yet.',
-    'login_throttle'    => 'Too many login attempts. Please try again in :seconds seconds.',
 
-    'logout_msg'        => 'You have been logout.',
+    'login_failed'      => 'Tên đăng nhập hoặc mật khẩu không đúng.',
+    'login_not_active'  => 'Tài khoản của bạn chưa được kích hoạt.',
+    'login_throttle'    => 'Tài khoản của bạn bị block trong vòng :seconds sec.',
+
+    'logout_msg' => 'Bạn đã đăng xuất.',
+
 
 ];

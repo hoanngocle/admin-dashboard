@@ -32,7 +32,7 @@ class Users extends CartalystUser
      * @var array
      */
     protected $hidden = [
-        'password', 'remember',
+        'password',
     ];
 
     /**
@@ -48,5 +48,20 @@ class Users extends CartalystUser
         }
 
         return $nickname;
+    }
+
+    /**
+     * return username of user
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        $avatar = Sentinel::getUser()->avatar;
+        if ($avatar == '') {
+            $avatar = 'user-default.jpg';
+        }
+
+        return $avatar;
     }
 }

@@ -23,9 +23,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $nickName = $this->userFactory->getUsername();
+        // test contribute
+        $nickName   = $this->userFactory->getUsername();
+        $avatar     = $this->userFactory->getAvatar();
+
         return view('admin.pages.dashboard', [
-            'nickname' => $nickName
+            'nickname'  => $nickName,
+            'avatar'    => $avatar
         ]);
     }
 

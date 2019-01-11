@@ -20,7 +20,7 @@
                 <p class="text-danger"> {{ $errors->first('password')}}</p>
             @endif
             <div class="checkbox checkbox-css m-b-20">
-                <input type="checkbox" id="remember" value="1"/>
+                <input type="checkbox" id="remember" name="remember" value="1"/>
                 <label for="remember">
                 {{__('label.remember_me')}}
                 </label>
