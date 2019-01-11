@@ -52,6 +52,7 @@ class LoginController extends Controller
      */
     public function processLogin(Login $request)
     {
+        // test contribute
         try {
             $remember = (boolean) $request->get('remember');
             if (Sentinel::authenticate($request->all(), $remember)) {
