@@ -34,34 +34,4 @@ class Users extends CartalystUser
     protected $hidden = [
         'password',
     ];
-
-    /**
-     * return username of user
-     *
-     * @return string
-     */
-    public function getUsername()
-    {
-        $nickname = Sentinel::getUser()->nickname;
-        if ($nickname == '') {
-            $nickname = Sentinel::getUser()->getUserLoginName();
-        }
-
-        return $nickname;
-    }
-
-    /**
-     * return username of user
-     *
-     * @return string
-     */
-    public function getAvatar()
-    {
-        $avatar = Sentinel::getUser()->avatar;
-        if ($avatar == '') {
-            $avatar = 'user-default.jpg';
-        }
-
-        return $avatar;
-    }
 }

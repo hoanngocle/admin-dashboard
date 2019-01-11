@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Sentinel;
 
 class DashboardController extends Controller
 {
-    protected $userFactory;
+    protected $userRepository;
 
     public function __construct(
-        \App\Models\Users $userFactory
+        \App\Repositories\User\UserRepository $userRepository
     ) {
-        $this->userFactory = $userFactory;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -24,8 +22,8 @@ class DashboardController extends Controller
     public function index()
     {
         // test contribute
-        $nickName   = $this->userFactory->getUsername();
-        $avatar     = $this->userFactory->getAvatar();
+        $nickName   = $this->userRepository->getUsername();
+        $avatar     = $this->userRepository->getAvatar();
 
         return view('admin.pages.dashboard', [
             'nickname'  => $nickName,
