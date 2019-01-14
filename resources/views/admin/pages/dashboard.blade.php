@@ -8,7 +8,7 @@
             <div class="widget widget-stats bg-gradient-green">
                 <div class="stats-icon stats-icon-lg"><i class="fa fa-globe fa-fw"></i></div>
                 <div class="stats-content">
-                    <div class="stats-title">TODAY'S VISITS</div>
+                    <div class="stats-title">VISITOR</div>
                     <div class="stats-number">7,842,900</div>
                     <div class="stats-progress progress">
                         <div class="progress-bar" style="width: 70.1%;"></div>

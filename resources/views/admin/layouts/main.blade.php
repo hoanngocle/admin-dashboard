@@ -31,7 +31,7 @@
             @include('admin.partials.breadcrumb')
 
             <!-- page-header -->
-            <h1 class="page-header">Dashboard v2 <small>header small text goes here...</small></h1>
+            <h1 class="page-header">Dashboard <small></small></h1>
 
             <!-- page #content -->
             @yield('content')
