@@ -43,16 +43,58 @@ Route::middleware(['auth', 'check.admin'])->domain('admin.' . env('APP_DOMAIN'))
         ]);
 
         // Member Management
+        Route::namespace('User')->group(function () {
+            Route::resource('user', 'UserController');
+        });
 
-        // Content management
+        // Training system management
+        Route::prefix('training-system')->namespace('TrainingSystem')->group(function () {
+            Route::resource('item', 'ItemController');
+            Route::resource('level', 'LevelController');
+            Route::resource('config', 'TrainingConfigurationController');
+        });
 
-        // Quiz management
+        // Novel management
+        Route::prefix('novel')->namespace('Novel')->group(function () {
+            Route::resource('author', 'AuthorController');
+            Route::resource('book', 'BookController');
+            Route::resource('chapter', 'ChapterController');
+        });
 
-        // Book management
+        // Blog management
+        Route::prefix('blog')->namespace('Blog')->group(function () {
+            Route::resource('image', 'ImageController');
+            Route::resource('video', 'VideoController');
+            Route::resource('post', 'PostController');
+        });
 
+        // Blog management
+        Route::prefix('money-expense')->namespace('Money')->group(function () {
+            Route::resource('loan-debt', 'LoanDebtController');
+            Route::resource('saving', 'SavingController');
+            Route::resource('transaction', 'TransactionController');
+            Route::resource('wallet', 'WalletController');
+        });
+
+        // E-Learning management
+        Route::prefix('learning')->namespace('Learning')->group(function () {
+            Route::resource('course', 'CourseController');
+            Route::resource('grammar', 'GrammarController');
+            Route::resource('kanji', 'KanjiController');
+            Route::resource('lesson', 'LessonController');
+            Route::resource('word', 'WordController');
+        });
+
+        // Count-down management
+        Route::namespace('Event')->group(function () {
+            Route::resource('event', 'EventController');
+        });
+
+        // CV management
+        Route::namespace('CV')->group(function () {
+            Route::resource('cv', 'CVController');
+        });
     });
-
-
 
 
 /***************************FRONT-END*****************************/

@@ -1029,8 +1029,8 @@
   // Produce a string from holder[key].
 
         var i,          // The loop counter.
-            k,          // The member key.
-            v,          // The member value.
+            k,          // The user key.
+            v,          // The user value.
             length,
             mind = gap,
             partial,
@@ -1136,7 +1136,7 @@
                 }
             }
 
-  // Join all of the member texts together, separated with commas,
+  // Join all of the user texts together, separated with commas,
   // and wrap them in braces.
 
             v = partial.length === 0 ? '{}' : gap ?

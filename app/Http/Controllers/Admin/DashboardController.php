@@ -8,11 +8,11 @@ class DashboardController extends Controller
 {
     protected $userRepository;
 
-    public function __construct(
-        \App\Repositories\User\UserRepository $userRepository
-    ) {
-        $this->userRepository = $userRepository;
-    }
+//    public function __construct(
+//        \App\Repositories\User\UserRepository $userRepository
+//    ) {
+//        $this->userRepository = $userRepository;
+//    }
 
     /**
      * Display a listing of the resource.
@@ -21,14 +21,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // test contribute
-        $nickName   = $this->userRepository->getUsername();
-        $avatar     = $this->userRepository->getAvatar();
-
-        return view('admin.pages.dashboard', [
-            'nickname'  => $nickName,
-            'avatar'    => $avatar
-        ]);
+        return view('admin.pages.dashboard');
     }
 
     /**

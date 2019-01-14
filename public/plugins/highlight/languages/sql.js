@@ -74,7 +74,7 @@ function(hljs) {
             'logoff logon logs long loop low low_priority lower lpad lrtrim ltrim main make_set makedate maketime ' +
             'managed management manual map mapping mask master master_pos_wait match matched materialized max ' +
             'maxextents maximize maxinstances maxlen maxlogfiles maxloghistory maxlogmembers maxsize maxtrans ' +
-            'md5 measures median medium member memcompress memory merge microsecond mid migration min minextents ' +
+            'md5 measures median medium user memcompress memory merge microsecond mid migration min minextents ' +
             'minimum mining minus minute minvalue missing mod mode model modification modify module monitoring month ' +
             'months mount move movement multiset mutex name name_const names nan national native natural nav nchar ' +
             'nclob nested never new newline next nextval no no_write_to_binlog noarchivelog noaudit nobadfile ' +

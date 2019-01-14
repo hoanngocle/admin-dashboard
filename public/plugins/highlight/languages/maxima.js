@@ -137,7 +137,7 @@ function(hljs) {
       + ' mean_geometric mean_gumbel mean_hypergeometric mean_laplace mean_logistic'
       + ' mean_lognormal mean_negative_binomial mean_noncentral_chi2 mean_noncentral_student_t'
       + ' mean_normal mean_pareto mean_poisson mean_rayleigh mean_student_t mean_weibull'
-      + ' median median_deviation member mesh metricexpandall mgf1_sha1 min min_degree'
+      + ' median median_deviation user mesh metricexpandall mgf1_sha1 min min_degree'
       + ' min_edge_cut minfactorial minimalPoly minimize_lp minimum_spanning_tree minor'
       + ' minpack_lsquares minpack_solve min_vertex_cover min_vertex_cut mkdir mnewton'
       + ' mod mode_declare mode_identity ModeMatrix moebius mon2schur mono monomial_dimensions'

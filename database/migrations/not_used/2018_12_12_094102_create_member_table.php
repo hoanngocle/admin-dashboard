@@ -27,9 +27,9 @@ class CreateMemberTable extends Migration
             $table->string('nickname', 50);
             $table->date('dob')->nullable()->comment('Date Of Birth');
             $table->enum('gender', ['Male', 'Female'])->nullable();
-            $table->unsignedBigInteger('coin')->default(0)->comment('Coin of member');
-            $table->unsignedInteger('level')->default(1)->comment('Level of member: define in table tm_level');
-            $table->unsignedBigInteger('exp')->default(0)->comment('Exp of member');
+            $table->unsignedBigInteger('coin')->default(0)->comment('Coin of user');
+            $table->unsignedInteger('level')->default(1)->comment('Level of user: define in table tm_level');
+            $table->unsignedBigInteger('exp')->default(0)->comment('Exp of user');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
             $table->softDeletes();

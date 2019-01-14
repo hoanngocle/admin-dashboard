@@ -1,5 +1,4 @@
         <!-- ================== BEGIN BASE CSS STYLE ================== -->
-
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
         <!-- jQuery-UI -->
@@ -22,18 +21,6 @@
 
         <!-- Theme default -->
         <link type="text/css" href="{{ asset('css/default/theme/default.css') }}" rel="stylesheet" />
-
-        <!-- Jvector -->
-        <link type="text/css" href="{{ asset('plugins/jquery-jvectormap/jquery-jvectormap.css') }}" rel="stylesheet" />
-
-        <!-- Bootstrap Calender -->
-        <link type="text/css" href="{{ asset('plugins/bootstrap-calendar/css/bootstrap_calendar.css') }}" rel="stylesheet" />
-
-        <!-- Jquery Gritter -->
-        <link type="text/css" href="{{ asset('plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" />
-
-        <!-- NV D3 Plugin -->
-        <link type="text/css" href="{{ asset('plugins/nvd3/build/nv.d3.css') }}" rel="stylesheet" />
 
         <script src="{{ asset('plugins/pace/pace.min.js') }}"></script>
 

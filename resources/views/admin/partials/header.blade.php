@@ -81,8 +81,8 @@
         <!-- User profile-->
         <li class="dropdown navbar-user">
             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ asset("img/user/$avatar.jpg") }}" alt="{{$avatar}}" />
-                <span class="d-none d-md-inline">{{ $nickname }}</span> <b class="caret"></b>
+                <img src="{{ asset("img/user/$currentAvatar.jpg") }}" alt="{{$currentAvatar}}" />
+                <span class="d-none d-md-inline">{{ $currentNickname }}</span> <b class="caret"></b>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="javascript:;" class="dropdown-item">Edit Profile</a>
