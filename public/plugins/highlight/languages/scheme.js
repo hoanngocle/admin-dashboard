@@ -33,7 +33,7 @@ function(hljs) {
       'force gcd imag-part inexact->exact inexact? input-port? integer->char ' +
       'integer? interaction-environment lcm length list list->string ' +
       'list->vector list-ref list-tail list? load log magnitude make-polar ' +
-      'make-rectangular make-string make-vector max member memq memv min ' +
+      'make-rectangular make-string make-vector max user memq memv min ' +
       'modulo negative? newline not null-environment null? number->string ' +
       'number? numerator odd? open-input-file open-output-file output-port? ' +
       'pair? peek-char port? positive? procedure? quasiquote quote quotient ' +

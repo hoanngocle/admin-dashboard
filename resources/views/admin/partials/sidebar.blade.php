@@ -8,11 +8,11 @@
                 <a href="#" data-toggle="nav-profile">
                     <div class="cover with-shadow"></div>
                     <div class="image">
-                    <img src="{{ asset("img/user/$avatar.jpg") }}" alt="{{$avatar}}" />
+                        <img src="{{ asset("img/user/$currentAvatar.jpg") }}" alt="{{ $currentAvatar }}"/>
                     </div>
                     <div class="info">
                         <b class="caret pull-right"></b>
-                        {{ $nickname }}
+                        {{ $currentNickname }}
                         <small>Back end developer</small>
                     </div>
                 </a>
@@ -42,8 +42,8 @@
                     <span>Member</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Member Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Statistic</a></li>
+                    <li><a href="{{ URL::route('user.index') }}">Member Management</a></li>
+                    {{--<li><a href="{{ URL::route('admin.dashboard') }}">Statistic</a></li>--}}
                 </ul>
             </li>
             <li class="has-sub">
@@ -53,9 +53,9 @@
                     <span>Training</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Item Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Level Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Setting</a></li>
+                    <li><a href="{{ URL::route('item.index') }}">Item Management</a></li>
+                    <li><a href="{{ URL::route('level.index') }}">Level Management</a></li>
+                    <li><a href="{{ URL::route('config.index') }}">Training Configuration</a></li>
                 </ul>
             </li>
             <li class="has-sub">
@@ -65,8 +65,8 @@
                     <span>Novel</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Author Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Novel Management</a></li>
+                    <li><a href="{{ URL::route('author.index') }}">Author Management</a></li>
+                    <li><a href="{{ URL::route('book.index') }}">Book Management</a></li>
                     <li><a href="{{ URL::route('admin.dashboard') }}">Chapter Management</a></li>
                 </ul>
             </li>
@@ -77,9 +77,9 @@
                     <span>Blog</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Image Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Video Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Post Management</a></li>
+                    <li><a href="{{ URL::route('image.index') }}">Image Management</a></li>
+                    <li><a href="{{ URL::route('video.index') }}">Video Management</a></li>
+                    <li><a href="{{ URL::route('post.index') }}">Post Management</a></li>
                 </ul>
             </li>
 
@@ -90,11 +90,10 @@
                     <span>Money Expense</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Transaction Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Wallet Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Loan Debt Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Saving Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Saving Management</a></li>
+                    <li><a href="{{ URL::route('transaction.index') }}">Transaction Management</a></li>
+                    <li><a href="{{ URL::route('wallet.index') }}">Wallet Management</a></li>
+                    <li><a href="{{ URL::route('loan-debt.index') }}">Loan Debt Management</a></li>
+                    <li><a href="{{ URL::route('saving.index') }}">Saving Management</a></li>
                 </ul>
             </li>
 
@@ -105,23 +104,36 @@
                     <span>E-Learning</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Course Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Lesson Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Word Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Kanji Management</a></li>
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Bunpou Management</a></li>
+                    <li><a href="{{ URL::route('course.index') }}">Course Management</a></li>
+                    <li><a href="{{ URL::route('lesson.index') }}">Lesson Management</a></li>
+                    <li><a href="{{ URL::route('word.index') }}">Word Management</a></li>
+                    <li><a href="{{ URL::route('kanji.index') }}">Kanji Management</a></li>
+                    <li><a href="{{ URL::route('grammar.index') }}">Grammar Management</a></li>
                 </ul>
             </li>
 
-            <li class="has-sub">
-                <a href="javascript:;">
+            <li>
+                <a href="{{ URL::route('cv.index') }}">
+                    <b class="caret"></b>
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>CV</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ URL::route('event.index') }}">
+                    <b class="caret"></b>
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Event</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
                     <b class="caret"></b>
                     <i class="fas fa-cog"></i>
                     <span>System Configuration</span>
                 </a>
-                <ul class="sub-menu">
-                    <li><a href="{{ URL::route('admin.dashboard') }}">Course Management</a></li>
-                </ul>
             </li>
 
             <!-- begin sidebar minify button -->

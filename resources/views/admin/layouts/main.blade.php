@@ -2,13 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>My Universe | Dashboard</title>
+        <title>My Universe | {{ ucfirst($title ?? '') }}</title>
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
 
         <!-- include css-->
         @include('admin.assests.css')
+        @yield('custom-css')
     </head>
     <body>
     <!-- begin #page-loader -->
@@ -30,12 +31,8 @@
             <!-- partials breadcrumb -->
             @include('admin.partials.breadcrumb')
 
-            <!-- page-header -->
-            <h1 class="page-header">Dashboard <small></small></h1>
-
             <!-- page #content -->
             @yield('content')
-
         </div>
 
         <!-- partials - scroll to top btn -->
@@ -45,5 +42,6 @@
 
     <!-- include js -->
     @include('admin.assests.js')
+    @yield('custom-js')
     </body>
 </html>

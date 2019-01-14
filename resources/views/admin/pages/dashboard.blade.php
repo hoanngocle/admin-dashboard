@@ -1,6 +1,23 @@
-@extends('admin.layouts.main')
+@extends('admin.layouts.main', ['title' => 'Dashboard'])
+
+@section('custom-css')
+    <!-- Jvector -->
+    <link type="text/css" href="{{ asset('plugins/jquery-jvectormap/jquery-jvectormap.css') }}" rel="stylesheet" />
+
+    <!-- Bootstrap Calender -->
+    <link type="text/css" href="{{ asset('plugins/bootstrap-calendar/css/bootstrap_calendar.css') }}" rel="stylesheet" />
+
+    <!-- Jquery Gritter -->
+    <link type="text/css" href="{{ asset('plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" />
+
+    <!-- NV D3 Plugin -->
+    <link type="text/css" href="{{ asset('plugins/nvd3/build/nv.d3.css') }}" rel="stylesheet" />
+@endsection
 
 @section('content')
+    <!-- page-header -->
+    <h1 class="page-header">Dashboard <small></small></h1>
+
     <!-- begin row -->
     <div class="row">
         <!-- begin col-3 -->
@@ -278,4 +295,21 @@
         <!-- end col-4 -->
     </div>
     <!-- end row -->
+@endsection
+
+@section('custom-js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js"></script>
+    <script src="{{ asset('plugins/nvd3/build/nv.d3.js') }}"></script>
+    <script src="{{ asset('plugins/jquery-jvectormap/jquery-jvectormap.min.js') }}"></script>
+    <script src="{{ asset('plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-calendar/js/bootstrap_calendar.min.js') }}"></script>
+    <script src="{{ asset('plugins/gritter/js/jquery.gritter.js') }}"></script>
+
+    <script src="{{ asset('js/admin/dashboard-v2.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            App.init();
+            DashboardV2.init();
+        });
+    </script>
 @endsection

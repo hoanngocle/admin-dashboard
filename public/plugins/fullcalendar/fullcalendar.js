@@ -1833,7 +1833,7 @@ Class.extend = function() {
 };
 
 
-// Adds new member variables/methods to the class's prototype.
+// Adds new user variables/methods to the class's prototype.
 // Can be called with another class, or a plain object hash containing new members.
 Class.mixin = function(members) {
 	mixIntoClass(this, members);
@@ -1856,7 +1856,7 @@ function extendClass(superClass, members) {
 	// build the base prototype for the subclass, which is an new object chained to the superclass's prototype
 	subClass.prototype = createObject(superClass.prototype);
 
-	// copy each member variable/method onto the the subclass's prototype
+	// copy each user variable/method onto the the subclass's prototype
 	copyOwnProps(members, subClass.prototype);
 	copyNativeMethods(members, subClass.prototype); // hack for IE8
 
@@ -7966,7 +7966,7 @@ var View = FC.View = Class.extend(EmitterMixin, ListenerMixin, {
 	},
 
 
-	// A good place for subclasses to initialize member variables
+	// A good place for subclasses to initialize user variables
 	initialize: function() {
 		// subclasses can implement
 	},
@@ -8004,7 +8004,7 @@ var View = FC.View = Class.extend(EmitterMixin, ListenerMixin, {
 
 	// Updates all internal dates for displaying the given unzoned range.
 	setRange: function(range) {
-		$.extend(this, range); // assigns every property to this object's member variables
+		$.extend(this, range); // assigns every property to this object's user variables
 		this.updateTitle();
 	},
 

@@ -31,7 +31,7 @@ class UserController extends Controller
     public function index()
     {
 
-        return 'list data';
+        return view('admin.pages.user.user-listing');
     }
 
     /**
@@ -41,7 +41,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return 'form create member';
+        return 'form create user';
     }
 
     /**
@@ -63,7 +63,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return 'show infor member';
+        return 'show infor user';
     }
 
     /**
@@ -74,7 +74,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return 'edit form member';
+        return 'edit form user';
     }
 
     /**
