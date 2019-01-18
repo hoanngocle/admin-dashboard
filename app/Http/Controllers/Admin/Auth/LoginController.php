@@ -8,16 +8,10 @@ use Sentinel;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+    /**
+     * @var \App\Repositories\User\UserRepository
+     */
+    protected $userRepository;
 
     /**
      * Where to redirect users after login.
@@ -31,8 +25,10 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(
+        \App\Repositories\User\UserRepository $userRepository
+    ) {
+        $this->userRepository = $userRepository;
         $this->middleware('guest', ['except' => 'logout']);
     }
 
@@ -57,8 +53,11 @@ class LoginController extends Controller
             $remember = (boolean) $request->get('remember');
             if (Sentinel::authenticate($request->all(), $remember)) {
                 // update to table
-
-                return redirect()->intended($this->redirectTo);
+                if ($this->userRepository->recordLoginLogout()) {
+                    return redirect()->intended($this->redirectTo);
+                } else {
+                    $err = __('auth.login_failed');
+                }
             } else {
                 $err = __('auth.login_failed');
             }
@@ -79,6 +78,7 @@ class LoginController extends Controller
      */
     public function logout()
     {
+        $this->userRepository->recordLoginLogout(false);
         Sentinel::logout(null, true);
 
         return redirect()->route('auth.login.form')->withErrors(__('auth.logout_msg'));

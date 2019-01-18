@@ -31,9 +31,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
      */
     public function getUsername()
     {
-        $nickname = Sentinel::getUser()->nickname;
-        if ($nickname == '') {
-            $nickname = Sentinel::getUser()->getUserLoginName();
+        $nickname = 'user-default';
+        if (Sentinel::check()) {
+            $nickname = Sentinel::getUser()->nickname ? '' : Sentinel::getUser()->getUserLoginName();
         }
 
         return $nickname;
@@ -46,11 +46,35 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
      */
     public function getAvatar()
     {
-        $avatar = Sentinel::getUser()->avatar;
-        if ($avatar == '') {
-            $avatar = 'user-default.jpg';
+        $avatar = 'user-default.jpg';
+        if (Sentinel::check()) {
+            $avatar = Sentinel::getUser()->avatar ?? 'user-default.jpg';
         }
 
         return $avatar;
+    }
+
+    /**
+     * update status + log_num when login logout
+     *
+     * @return string
+     */
+    public function recordLoginLogout($isLogin = true)
+    {
+        $user = $this->find(Sentinel::getUser()->id);
+        if ($isLogin) {
+            $user->log_num      = $user->log_num + 1;
+            $user->is_online    = 'Online';
+        } else {
+            $user->is_online    = 'Offline';
+        }
+
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -30,8 +30,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        $listUser = $this->userRepository->getAll();
 
-        return view('admin.pages.user.user-listing');
+        return view('admin.pages.user.user-listing', ['listUser' => $listUser]);
     }
 
     /**

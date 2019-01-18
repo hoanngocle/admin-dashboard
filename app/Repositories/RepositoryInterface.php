@@ -17,7 +17,7 @@ interface RepositoryInterface
      * @param array $columns
      * @return mixed
      */
-    public function all($columns = array('*'));
+    public function getAll();
 
     /**
      * get paging item will be show
@@ -26,7 +26,7 @@ interface RepositoryInterface
      * @param array $columns
      * @return mixed
      */
-    public function paginate($limit = null, $columns = array('*'));
+    public function paginate($paging, $sort,$limit = null, $columns = array('*'));
 
     /**
      * get one
