@@ -36,6 +36,9 @@
         </div>
 
         <!-- partials - scroll to top btn -->
+        @include('admin.partials.modal')
+
+        <!-- partials - scroll to top btn -->
         @include('admin.partials.up-to-top')
     </div>
     <!-- end page container -->

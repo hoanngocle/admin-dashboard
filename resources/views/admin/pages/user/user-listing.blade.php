@@ -16,7 +16,8 @@
         <div class="panel-heading">
             <div class="panel-heading-btn">
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                <a href="{{ URL::route('user.create') }}" class="btn btn-xs btn-icon btn-circle btn-success" ><i class="fa fa-plus"></i></a>
             </div>
             <h4 class="panel-title">List Member</h4>
         </div>
@@ -33,9 +34,9 @@
                         <th class="text-nowrap">Email</th>
                         <th class="text-nowrap">Date Of Birth</th>
                         <th class="text-nowrap">Gender</th>
-                        <th class="text-nowrap">Coin</th>
-                        <th class="text-nowrap">Level</th>
-                        <th data-orderable="false"></th>
+                        <th width="10%" class="text-nowrap">Coin</th>
+                        <th width="10%" class="text-nowrap">Level</th>
+                        <th width="10%" data-orderable="false"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,9 +49,12 @@
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->dob }}</td>
                         <td>{{ $item->gender }}</td>
-                        <td>{{ $item->coin }}</td>
-                        <td>{{ $item->level }}</td>
-                        <td>action</td>
+                        <td width="5%">{{ $item->coin }}</td>
+                        <td width="5%">{{ $item->level }}</td>
+                        <td width="10%" class="with-btn" nowrap>
+                            <a href="{{ URL::route('user.edit', ['id' => $item->id]) }}" class="btn btn-sm btn-primary width-60 m-r-2">Edit</a>
+                            <a href="#modal-alert" class="btn btn-sm btn-danger" data-toggle="modal">Demo</a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
