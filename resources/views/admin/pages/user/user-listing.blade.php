@@ -55,7 +55,7 @@
                         <td width="5%">{{ $item->is_online }}</td>
                         <td width="10%" class="with-btn" nowrap>
                             <a href="{{ URL::route('user.edit', ['id' => $item->id]) }}" class="btn btn-sm btn-primary width-60 m-r-2">Edit</a>
-                            <a href="#modal-alert" class="btn btn-sm btn-danger" data-toggle="modal">Demo</a>
+                            <a href="#modal-alert" class="btn btn-sm btn-danger" data-toggle="modal">Delete</a>
                         </td>
                     </tr>
                     @endforeach
