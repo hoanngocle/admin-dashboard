@@ -33,7 +33,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     {
         $nickname = 'user-default';
         if (Sentinel::check()) {
-            $nickname = Sentinel::getUser()->nickname ? '' : Sentinel::getUser()->getUserLoginName();
+            $nickname = Sentinel::getUser()->nickname == '' ? Sentinel::getUser()->getUserLoginName() : Sentinel::getUser()->nickname;
         }
 
         return $nickname;
