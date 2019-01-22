@@ -55,7 +55,7 @@
                         <td width="5%">{{ $item->is_online }}</td>
                         <td width="10%" class="with-btn" nowrap>
                             <a href="{{ URL::route('user.edit', ['id' => $item->id]) }}" class="btn btn-sm btn-primary width-60 m-r-2">Edit</a>
-                            <a href="#modal-alert" class="btn btn-sm btn-danger" data-toggle="modal">Delete</a>
+                            <a href="#" class="btn btn-sm btn-danger" data-click="swal-danger">Delete</a>
                         </td>
                     </tr>
                     @endforeach
@@ -71,12 +71,15 @@
     <script src="{{ asset('plugins/DataTables/media/js/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('plugins/DataTables/media/js/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('js/admin/sweet-notification.js') }}"></script>
 
     <script src="{{ asset('js/demo/table-manage-default.demo.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             App.init();
             TableManageDefault.init();
+            sweetNotification.init();
         });
     </script>
 @endsection
