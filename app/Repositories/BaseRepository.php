@@ -10,6 +10,8 @@ namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\DB;
+use Exception;
 
 /**
  * Class BaseRepository
@@ -27,6 +29,8 @@ abstract class BaseRepository implements RepositoryInterface
 
     /**
      * BaseRepository constructor.
+     *
+     * @param Application $app
      */
     public function __construct(Application $app)
     {
@@ -62,8 +66,9 @@ abstract class BaseRepository implements RepositoryInterface
      * @param array $columns
      * @return mixed
      */
-    public function all($columns = array('*'))
+    public function getAll()
     {
+        return $this->model->all();
         // TODO: Implement all() method.
     }
 
@@ -74,9 +79,9 @@ abstract class BaseRepository implements RepositoryInterface
      * @param array $columns
      * @return mixed
      */
-    public function paginate($limit = null, $columns = array('*'))
+    public function paginate($paging, $sort,$limit = null, $columns = array('*'))
     {
-        // TODO: Implement paginate() method.
+        return $this->model->orderBy($orderBy, $sort)->paginate($paging);
     }
 
     /**
@@ -88,7 +93,8 @@ abstract class BaseRepository implements RepositoryInterface
      */
     public function find($id, $columns = array('*'))
     {
-        // TODO: Implement find() method.
+        $result = $this->model->findOrFail($id);
+        return $result;
     }
 
     /**
@@ -150,7 +156,30 @@ abstract class BaseRepository implements RepositoryInterface
      */
     public function create(array $attributes)
     {
-        // TODO: Implement create() method.
+        try {
+            DB::beginTransaction();
+
+            $new = new $this->model;
+
+            foreach ($attributes as $key => $value) {
+                $new->$key = $attributes[$key];
+            }
+
+            $new->save();
+
+            DB::commit();
+
+            $result['status'] = true;
+            $result['content'] = $new;
+
+        } catch (Exception $e) {
+            DB::rollBack();
+            logger('【 ' . __METHOD__ . ' 】 - ' . $e->getMessage());
+
+            $result['status'] = false;
+            $result['content'] = $e->getMessage();
+        }
+        return $result;
     }
 
     /**
@@ -162,7 +191,32 @@ abstract class BaseRepository implements RepositoryInterface
      */
     public function update(array $attributes, $id)
     {
-        // TODO: Implement update() method.
+        $update = $this->find($id);
+        if ($update) {
+            try {
+                DB::beginTransaction();
+
+                $update->update($attributes);
+
+                DB::commit();
+
+                $result['status'] = true;
+                $result['content'] = $update;
+
+            } catch (Exception $e) {
+                DB::rollBack();
+                logger('【 ' . __METHOD__ . ' 】 - ' . $e->getMessage());
+
+                $result['status'] = false;
+                $result['content'] = $e->getMessage();
+            }
+
+        } else {
+            $result['status'] = false;
+            $result['content'] = 'Not found data to update';
+        }
+
+        return $result;
     }
 
     /**
@@ -173,6 +227,12 @@ abstract class BaseRepository implements RepositoryInterface
      */
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $result = $this->find($id);
+        if ($result) {
+            $result->delete();
+            return true;
+        }
+
+        return false;
     }
 }

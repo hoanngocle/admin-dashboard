@@ -30,8 +30,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        $listUser = $this->userRepository->getAll();
 
-        return view('admin.pages.user.user-listing');
+        return view('admin.pages.user.user-listing', ['listUser' => $listUser]);
     }
 
     /**
@@ -41,7 +42,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return 'form create user';
+        return view('admin.pages.user.user-form');
     }
 
     /**
@@ -74,7 +75,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return 'edit form user';
+        $userInfo = $this->userRepository->find($id);
+        return view('admin.pages.user.user-form', ['userInfo' => $userInfo]);
     }
 
     /**

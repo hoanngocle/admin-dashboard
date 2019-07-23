@@ -8,7 +8,7 @@
                 <a href="#" data-toggle="nav-profile">
                     <div class="cover with-shadow"></div>
                     <div class="image">
-                        <img src="{{ asset("img/user/$currentAvatar.jpg") }}" alt="{{ $currentAvatar }}"/>
+                        <img src="{{ asset("img/user/$currentAvatar") }}" alt="{{ $currentAvatar }}"/>
                     </div>
                     <div class="info">
                         <b class="caret pull-right"></b>
